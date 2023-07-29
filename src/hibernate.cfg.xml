@@ -9,6 +9,12 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">80221474</property>
     <property name="show_sql">true</property>
+    <!--      ddl-data definition language-->
+    <!--                to-->
+    <!--      hbm-hibernate mapping-->
+<!--    schema generation-->
+<!--    CREATE - drop table and re genarate DAT - loss data-->
+<!--    UPDATE - already defined exists / not define : create-->
     <property name="hibernate.hbm2ddl.auto">update</property>
   </session-factory>
 </hibernate-configuration>
