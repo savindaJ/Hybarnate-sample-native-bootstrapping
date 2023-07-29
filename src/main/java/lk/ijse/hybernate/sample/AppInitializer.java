@@ -1,6 +1,6 @@
 package lk.ijse.hybernate.sample;
 
-public class Main {
+public class AppInitializer {
     public static void main(String[] args) {
 
     }
