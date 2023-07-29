@@ -2,6 +2,7 @@ package lk.ijse.hybernate.sample;
 
 import lk.ijse.hybernate.sample.config.SessionFactoryConfig;
 import lk.ijse.hybernate.sample.entity.Customer;
+import lk.ijse.hybernate.sample.entity.Item;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -36,5 +37,16 @@ public class AppInitializer {
         transaction.commit();
         session.close();*/
 
+        Session session = SessionFactoryConfig.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Item item = new Item();
+        item.setItemCode("I001");
+        item.setName("Rice");
+        item.setPrice(200.45);
+        item.setQty(20);
+
+        session.save(item);
+        transaction.commit();session.close();
     }
 }

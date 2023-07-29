@@ -1,6 +1,7 @@
 package lk.ijse.hybernate.sample.config;
 
 import lk.ijse.hybernate.sample.entity.Customer;
+import lk.ijse.hybernate.sample.entity.Item;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -23,7 +24,7 @@ public class SessionFactoryConfig {
     public Session getSession(){
 
         StandardServiceRegistry builder = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-        Metadata meta = new MetadataSources(builder).addAnnotatedClass(Customer.class).
+        Metadata meta = new MetadataSources(builder).addAnnotatedClass(Customer.class).addAnnotatedClass(Item.class).
                 getMetadataBuilder().
                 applyImplicitNamingStrategy(ImplicitNamingStrategyComponentPathImpl.INSTANCE).
                 build();
