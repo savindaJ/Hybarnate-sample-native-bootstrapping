@@ -1,14 +1,24 @@
 package lk.ijse.hybernate.sample.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+/*identify entity*/
 @Entity
+/*naming table*/
+@Table(schema = "customer")
 public class Customer {
+    @Column(name = "CustomerName")
     String name;
+    @Column(name = "CustomerAddress")
     String address;
-    String contact;
-    @Id
+    @Column(name = "CustomerSalary")
+    Double salary;
+
+    @Id //identify primary key
+    @Column(name = "customerID")  // identify column
     String id;
 
     public String getName() {
@@ -27,12 +37,12 @@ public class Customer {
         this.address = address;
     }
 
-    public String getContact() {
-        return contact;
+    public Double getContact() {
+        return salary;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setContact(Double contact) {
+        this.salary = contact;
     }
 
     public String getId() {
