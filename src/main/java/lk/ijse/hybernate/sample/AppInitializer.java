@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 
 public class AppInitializer {
     public static void main(String[] args) {
+
        /* Customer customer = new Customer();
         customer.setAddress("matara");
         customer.setContact(200.78);
@@ -18,15 +19,22 @@ public class AppInitializer {
         transaction.commit();
         session.close();*/
 
-        Session session = SessionFactoryConfig.getInstance().getSession();
+        /*Session session = SessionFactoryConfig.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         Customer s001 = session.get(Customer.class, "S001");
         s001.setName("SAVINDA");
         s001.setAddress("Dickwalla");
         session.save(s001);
         transaction.commit();
-        session.close();
+        session.close();*/
 
+
+        /*Session session = SessionFactoryConfig.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        Customer s001 = session.get(Customer.class, "S001");
+        session.delete(s001);
+        transaction.commit();
+        session.close();*/
 
     }
 }
