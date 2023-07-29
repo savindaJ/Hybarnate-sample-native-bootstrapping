@@ -22,7 +22,7 @@ public class SessionFactoryConfig {
 
     public Session getSession(){
 
-        StandardServiceRegistry builder = new StandardServiceRegistryBuilder().configure().build();
+        StandardServiceRegistry builder = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
         Metadata meta = new MetadataSources(builder).addAnnotatedClass(Customer.class).
                 getMetadataBuilder().
                 applyImplicitNamingStrategy(ImplicitNamingStrategyComponentPathImpl.INSTANCE).
