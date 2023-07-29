@@ -1,6 +1,9 @@
 package lk.ijse.hybernate.sample.config;
 
+import lk.ijse.hybernate.sample.entity.Customer;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -20,10 +23,14 @@ public class SessionFactoryConfig {
     public Session getSession(){
 
         StandardServiceRegistry builder = new StandardServiceRegistryBuilder().configure().build();
+        Metadata meta = new MetadataSources(builder).addAnnotatedClass(Customer.class).
+                getMetadataBuilder().
+                applyImplicitNamingStrategy(ImplicitNamingStrategyComponentPathImpl.INSTANCE).
+                build();
 
-        new MetadataSources(builder).getMetadataBuilder().applyImplicitNamingStrategy(ImplicitNamingStrategyComponentPathImpl.INSTANCE);
 
-        return null;
+        SessionFactory sessionFactory = meta.buildSessionFactory();
+        return sessionFactory.openSession();
     }
 
 }
