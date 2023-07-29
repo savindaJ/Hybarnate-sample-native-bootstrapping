@@ -1,6 +1,10 @@
 package lk.ijse.hybernate.sample.config;
 
 import org.hibernate.Session;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
 
 public class SessionFactoryConfig {
 
@@ -13,6 +17,11 @@ public class SessionFactoryConfig {
     }
 
     public Session getSession(){
+
+        StandardServiceRegistry builder = new StandardServiceRegistryBuilder().configure().build();
+
+        MetadataSources metadataSources = new MetadataSources(builder);
+
         return null;
     }
 
