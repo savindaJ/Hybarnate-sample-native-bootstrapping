@@ -2,6 +2,7 @@ package lk.ijse.hybernate.sample.config;
 
 import org.hibernate.Session;
 import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
@@ -20,7 +21,7 @@ public class SessionFactoryConfig {
 
         StandardServiceRegistry builder = new StandardServiceRegistryBuilder().configure().build();
 
-        MetadataSources metadataSources = new MetadataSources(builder);
+        new MetadataSources(builder).getMetadataBuilder().applyImplicitNamingStrategy(ImplicitNamingStrategyComponentPathImpl.INSTANCE);
 
         return null;
     }
