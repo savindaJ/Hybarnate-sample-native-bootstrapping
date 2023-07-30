@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.hybernate.sample.controller.MenuController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hybernate.sample.controller.MenuController">
+   <children>
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="52.0" layoutY="108.0" onMouseClicked="#btnCustomerClick" onMouseEntered="#mouseEnterd" onMouseExited="#mouseExsits" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../aseets/service-header.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="228.0" layoutY="108.0" onMouseClicked="#btnItemClick" onMouseEntered="#mouseEnterd" onMouseExited="#mouseExsits" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../aseets/skill-header.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="400.0" layoutY="108.0" onMouseClicked="#btnOrderClick" onMouseEntered="#mouseEnterd" onMouseExited="#mouseExsits" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../aseets/project-header.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblTitle" alignment="CENTER" layoutX="102.0" layoutY="279.0" prefHeight="28.0" prefWidth="356.0" text="Home">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
