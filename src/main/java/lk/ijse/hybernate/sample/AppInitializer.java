@@ -38,8 +38,8 @@ public class AppInitializer {
         transaction.commit();
         session.close();*/
 
-        Session session = SessionFactoryConfigToProperty.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
+        /*Session session = SessionFactoryConfigToProperty.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();*/
 
        /* Item item = new Item();
         item.setItemCode("I002");
@@ -49,13 +49,13 @@ public class AppInitializer {
 
         session.save(item);*/
 
-        Item item = session.get(Item.class, "I001");
-       /* item.setQty(30);
+        /*Item item = session.get(Item.class, "I001");
+        item.setQty(30);
         item.setPrice(8000.0);
-        session.update(item);*/
+        session.update(item);
         Customer s002 = session.get(Customer.class, "S002");
         session.delete(s002);
         transaction.commit();
-        session.close();
+        session.close();*/
     }
 }

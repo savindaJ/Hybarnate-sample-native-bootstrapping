@@ -14,6 +14,8 @@ public class HomeController {
     private JFXButton btnLogin;
 
     public void btnLoginOnAction(ActionEvent actionEvent) {
+        if (txtUserName.getText().equals("savinda") && txtPassword.getText().equals("savinda")){
 
+        }
     }
 }
