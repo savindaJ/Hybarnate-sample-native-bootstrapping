@@ -53,7 +53,8 @@ public class AppInitializer {
        /* item.setQty(30);
         item.setPrice(8000.0);
         session.update(item);*/
-        session.delete(item);
+        Customer s002 = session.get(Customer.class, "S002");
+        session.delete(s002);
         transaction.commit();
         session.close();
     }
