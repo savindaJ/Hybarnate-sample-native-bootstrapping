@@ -67,7 +67,7 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/home.fxml"))));
+        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/menu.fxml"))));
         primaryStage.setTitle("login");
         primaryStage.centerOnScreen();
         primaryStage.show();

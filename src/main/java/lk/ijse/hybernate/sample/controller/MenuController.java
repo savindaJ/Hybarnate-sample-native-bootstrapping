@@ -1,12 +1,22 @@
 package lk.ijse.hybernate.sample.controller;
 
 import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class MenuController {
     public Label lblTitle;
@@ -14,8 +24,24 @@ public class MenuController {
     public ImageView imgItem;
     public ImageView imgCustomer;
 
-    public void btnCustomerClick(MouseEvent mouseEvent) {
+    @FXML
+    Parent root;
 
+    public void btnCustomerClick(MouseEvent mouseEvent) throws IOException {
+        Parent root = null;
+        root = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customer.fxml")));
+        if (root != null) {
+            Scene subScene = new Scene(root);
+            Stage primaryStage = (Stage) this.root.getScene().getWindow();
+            primaryStage.setScene(subScene);
+            primaryStage.centerOnScreen();
+
+            TranslateTransition tt = new TranslateTransition(Duration.millis(350), subScene.getRoot());
+            tt.setFromX(-subScene.getWidth());
+            tt.setToX(0);
+            tt.play();
+
+        }
     }
 
     public void btnItemClick(MouseEvent mouseEvent) {
