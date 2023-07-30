@@ -15,6 +15,7 @@ public class MenuController {
     public ImageView imgCustomer;
 
     public void btnCustomerClick(MouseEvent mouseEvent) {
+
     }
 
     public void btnItemClick(MouseEvent mouseEvent) {
