@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 
 public class HomeController {
     @FXML
@@ -16,6 +17,8 @@ public class HomeController {
     public void btnLoginOnAction(ActionEvent actionEvent) {
         if (txtUserName.getText().equals("savinda") && txtPassword.getText().equals("savinda")){
 
+        }else {
+            new Alert(Alert.AlertType.ERROR,"wrong password or userName !").show();
         }
     }
 }
