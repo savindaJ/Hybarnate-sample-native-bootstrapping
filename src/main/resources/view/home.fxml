@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.hybernate.sample.controller.HomeController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane focusTraversable="true" prefHeight="465.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hybernate.sample.controller.HomeController">
+   <children>
+      <JFXTextField fx:id="txtUserName" focusColor="#f22d44" labelFloat="true" layoutX="114.0" layoutY="190.0" prefHeight="25.0" prefWidth="257.0" promptText="User name" style="-fx-border-radius: 10;" unFocusColor="#6647d3">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtPassword" focusColor="#f22d44" labelFloat="true" layoutX="114.0" layoutY="260.0" prefHeight="25.0" prefWidth="257.0" promptText="Password" unFocusColor="#6647d3">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="204.0" layoutY="351.0" onAction="#btnLoginOnAction" prefHeight="37.0" prefWidth="77.0" style="-fx-background-color: blue; -fx-background-radius: 10;" text="Login" textFill="WHITE" />
+   </children>
 </AnchorPane>
