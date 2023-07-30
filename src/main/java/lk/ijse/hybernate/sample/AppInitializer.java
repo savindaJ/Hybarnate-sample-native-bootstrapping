@@ -41,13 +41,19 @@ public class AppInitializer {
         Session session = SessionFactoryConfigToProperty.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        Item item = new Item();
+       /* Item item = new Item();
         item.setItemCode("I002");
         item.setName("Cake");
         item.setPrice(100.36);
         item.setQty(10);
 
-        session.save(item);
-        transaction.commit();session.close();
+        session.save(item);*/
+
+        Item item = session.get(Item.class, "I001");
+        item.setQty(30);
+        item.setPrice(8000.0);
+        session.update(item);
+        transaction.commit();
+        session.close();
     }
 }
