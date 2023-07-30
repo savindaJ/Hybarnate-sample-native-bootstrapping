@@ -1,6 +1,7 @@
 package lk.ijse.hybernate.sample;
 
 import lk.ijse.hybernate.sample.config.SessionFactoryConfig;
+import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
 import lk.ijse.hybernate.sample.entity.Customer;
 import lk.ijse.hybernate.sample.entity.Item;
 import org.hibernate.Session;
@@ -37,14 +38,14 @@ public class AppInitializer {
         transaction.commit();
         session.close();*/
 
-        Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfigToProperty.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         Item item = new Item();
-        item.setItemCode("I001");
-        item.setName("Rice");
-        item.setPrice(200.45);
-        item.setQty(20);
+        item.setItemCode("I002");
+        item.setName("Cake");
+        item.setPrice(100.36);
+        item.setQty(10);
 
         session.save(item);
         transaction.commit();session.close();
