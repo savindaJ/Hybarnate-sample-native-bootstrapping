@@ -9,17 +9,17 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hybernate.sample.controller.MenuController">
    <children>
-      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="52.0" layoutY="108.0" onMouseClicked="#btnCustomerClick" onMouseEntered="#mouseEnterd" onMouseExited="#mouseExsits" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="52.0" layoutY="108.0" onMouseClicked="#btnCustomerClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../aseets/service-header.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="228.0" layoutY="108.0" onMouseClicked="#btnItemClick" onMouseEntered="#mouseEnterd" onMouseExited="#mouseExsits" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="228.0" layoutY="108.0" onMouseClicked="#btnItemClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../aseets/skill-header.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="400.0" layoutY="108.0" onMouseClicked="#btnOrderClick" onMouseEntered="#mouseEnterd" onMouseExited="#mouseExsits" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="400.0" layoutY="108.0" onMouseClicked="#btnOrderClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../aseets/project-header.png" />
          </image>
