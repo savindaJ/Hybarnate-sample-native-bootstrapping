@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.hybernate.sample.controller.CustomerController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="494.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hybernate.sample.controller.CustomerController">
+   <children>
+      <JFXTextField labelFloat="true" layoutX="28.0" layoutY="52.0" prefHeight="25.0" prefWidth="162.0" promptText="Name" />
+      <JFXTextField labelFloat="true" layoutX="28.0" layoutY="122.0" prefHeight="25.0" prefWidth="162.0" promptText="address" />
+      <JFXTextField labelFloat="true" layoutX="233.0" layoutY="122.0" prefHeight="25.0" prefWidth="162.0" promptText="Salary" />
+      <JFXTextField labelFloat="true" layoutX="233.0" layoutY="52.0" prefHeight="25.0" prefWidth="162.0" promptText="id" />
+      <JFXButton layoutX="357.0" layoutY="177.0" prefHeight="25.0" prefWidth="48.0" text="Save" />
+   </children>
 </AnchorPane>
