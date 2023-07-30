@@ -50,9 +50,10 @@ public class AppInitializer {
         session.save(item);*/
 
         Item item = session.get(Item.class, "I001");
-        item.setQty(30);
+       /* item.setQty(30);
         item.setPrice(8000.0);
-        session.update(item);
+        session.update(item);*/
+        session.delete(item);
         transaction.commit();
         session.close();
     }
