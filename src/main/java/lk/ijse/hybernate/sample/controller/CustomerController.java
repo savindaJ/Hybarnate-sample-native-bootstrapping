@@ -45,6 +45,7 @@ public class CustomerController {
             transaction.commit();
 
             if (!(save ==null)){
+                initUi();
                 new CustomAlert(Alert.AlertType.CONFIRMATION,"confirmation","saved !","Customer Saved !").show();
             }else {
                 new CustomAlert(Alert.AlertType.ERROR,"Error !","Not Saved !","Customer not Saved Try again !").show();
@@ -53,15 +54,34 @@ public class CustomerController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        new CustomAlert(Alert.AlertType.INFORMATION,"confirmation","saved !","Customer Saved !").show();
+        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+
+            Transaction transaction = session.beginTransaction();
+//            session.get(Customer.class,);
+        }
+
+        new CustomAlert(Alert.AlertType.INFORMATION,"Update","Updated !","Customer Updated !").show();
 
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
-        Session session = SessionFactoryConfigToProperty.getInstance().getSession();
+        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+
+            Transaction transaction = session.beginTransaction();
+
+//            session.delete();
+        }
     }
 
     public void cmbIdOnAction(ActionEvent actionEvent) {
+
+    }
+
+    private void initUi(){
+        txtAddress.clear();
+        txtId.clear();
+        txtId.clear();
+        txtSalary.clear();
     }
 
     public void btnBackClicked(MouseEvent event) throws IOException {

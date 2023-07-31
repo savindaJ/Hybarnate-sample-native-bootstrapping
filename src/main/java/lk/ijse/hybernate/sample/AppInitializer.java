@@ -14,7 +14,6 @@ import org.hibernate.Transaction;
 
 public class AppInitializer extends Application {
     public static void main(String[] args) {
-
        /* Customer customer = new Customer();
         customer.setAddress("matara");
         customer.setContact(200.78);
@@ -64,11 +63,10 @@ public class AppInitializer extends Application {
         session.close();*/
         launch(args);
     }
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/menu.fxml"))));
-        primaryStage.setTitle("login");
+        primaryStage.setTitle("hibernate");
         primaryStage.centerOnScreen();
         primaryStage.show();
     }
