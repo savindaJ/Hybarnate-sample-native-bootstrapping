@@ -11,36 +11,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="453.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hybernate.sample.controller.CustomerController">
+<AnchorPane fx:id="root" prefHeight="453.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hybernate.sample.controller.CustomerController">
    <children>
       <ImageView fitHeight="470.0" fitWidth="678.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../aseets/admin.png" />
          </image>
       </ImageView>
-      <JFXTextField focusColor="#b10909" labelFloat="true" layoutX="28.0" layoutY="52.0" prefHeight="25.0" prefWidth="162.0" promptText="Name" unFocusColor="#ff894f">
+      <JFXTextField fx:id="txtName" focusColor="#b10909" labelFloat="true" layoutX="28.0" layoutY="74.0" prefHeight="25.0" prefWidth="162.0" promptText="Name" unFocusColor="#ff894f">
          <font>
             <Font size="15.0" />
          </font></JFXTextField>
-      <JFXTextField focusColor="#b10909" labelFloat="true" layoutX="28.0" layoutY="122.0" prefHeight="25.0" prefWidth="162.0" promptText="address" unFocusColor="#ff894f">
+      <JFXTextField fx:id="txtAddress" focusColor="#b10909" labelFloat="true" layoutX="28.0" layoutY="144.0" prefHeight="25.0" prefWidth="162.0" promptText="address" unFocusColor="#ff894f">
          <font>
             <Font size="15.0" />
          </font></JFXTextField>
-      <JFXTextField focusColor="#b10909" labelFloat="true" layoutX="233.0" layoutY="122.0" prefHeight="25.0" prefWidth="162.0" promptText="Salary" unFocusColor="#ff894f">
+      <JFXTextField fx:id="txtSalary" focusColor="#b10909" labelFloat="true" layoutX="233.0" layoutY="144.0" prefHeight="25.0" prefWidth="162.0" promptText="Salary" unFocusColor="#ff894f">
          <font>
             <Font size="15.0" />
          </font></JFXTextField>
-      <JFXTextField focusColor="#b10909" labelFloat="true" layoutX="233.0" layoutY="52.0" prefHeight="25.0" prefWidth="162.0" promptText="id" unFocusColor="#ff894f">
+      <JFXTextField fx:id="txtId" focusColor="#b10909" labelFloat="true" layoutX="233.0" layoutY="74.0" prefHeight="25.0" prefWidth="162.0" promptText="id" unFocusColor="#ff894f">
          <font>
             <Font size="15.0" />
          </font></JFXTextField>
-      <JFXButton layoutX="471.0" layoutY="179.0" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Save" />
-      <JFXButton layoutX="533.0" layoutY="179.0" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Update" />
-      <JFXButton layoutX="597.0" layoutY="179.0" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Delete" />
-      <JFXComboBox layoutX="480.0" layoutY="97.0" prefHeight="25.0" prefWidth="162.0" />
+      <JFXButton layoutX="471.0" layoutY="179.0" onAction="#btnSaveOnAction" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Save" />
+      <JFXButton layoutX="533.0" layoutY="179.0" onAction="#btnUpdateOnAction" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Update" />
+      <JFXButton layoutX="597.0" layoutY="179.0" onAction="#btnDeleteOnAction" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Delete" />
+      <JFXComboBox fx:id="cmbId" focusColor="#b438dd" layoutX="480.0" layoutY="97.0" onAction="#cmbIdOnAction" prefHeight="25.0" prefWidth="162.0" />
       <JFXButton layoutX="597.0" layoutY="14.0" style="-fx-background-color: #162A5F;" text="Add new +" textFill="#f5f5f5" />
       <Label layoutX="480.0" layoutY="83.0" text="Select ID" />
-      <TableView layoutX="28.0" layoutY="239.0" prefHeight="209.0" prefWidth="624.0">
+      <TableView fx:id="tblCustomer" layoutX="28.0" layoutY="239.0" prefHeight="209.0" prefWidth="624.0">
         <columns>
           <TableColumn prefWidth="150.0" text="ID" />
           <TableColumn minWidth="0.0" prefWidth="153.0" text="Name" />
@@ -48,5 +48,10 @@
             <TableColumn minWidth="0.0" prefWidth="170.0" text="Salry" />
         </columns>
       </TableView>
+      <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="8.0" layoutY="7.0" onMouseClicked="#btnBackClicked" onMouseEntered="#mouseEnterd" onMouseExited="#mouseExsits" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../aseets/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
