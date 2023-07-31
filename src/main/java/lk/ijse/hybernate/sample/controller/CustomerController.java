@@ -51,9 +51,15 @@ public class CustomerController {
     public void btnSaveOnAction(ActionEvent actionEvent) {
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
             Transaction transaction = session.beginTransaction();
-            Customer customer = new Customer(txtName.getText(),txtAddress.getText(),Double.parseDouble(txtSalary.getText()),txtId.getText());
-            Serializable save = session.save(customer);
-            transaction.commit();
+            Customer customer = null;
+            Serializable save=null;
+            try {
+                customer = new Customer(txtName.getText(),txtAddress.getText(),Double.parseDouble(txtSalary.getText()),txtId.getText());
+                save = session.save(customer);
+                transaction.commit();
+            }catch (Exception e){
+//                new CustomAlert(Alert.AlertType.ERROR,"Error !","Empty !","Data is Empty Try again !").show();
+            }
 
             if (!(save ==null)){
                 initUi();
@@ -159,6 +165,6 @@ public class CustomerController {
         txtSalary.setDisable(false);
         btnSave.setDisable(false);
         txtName.setDisable(false);
-        btnSave.requestFocus();
+        txtName.requestFocus();
     }
 }
