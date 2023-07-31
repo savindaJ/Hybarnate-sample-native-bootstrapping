@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="453.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hybernate.sample.controller.ItemController">
+<AnchorPane fx:id="root" prefHeight="453.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hybernate.sample.controller.ItemController">
    <children>
       <ImageView fitHeight="453.0" fitWidth="678.0" pickOnBounds="true" preserveRatio="true">
          <image>
