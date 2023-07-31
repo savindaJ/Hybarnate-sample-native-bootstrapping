@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
 import lk.ijse.hybernate.sample.entity.Customer;
+import lk.ijse.hybernate.sample.util.CustomAlert;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -44,13 +45,15 @@ public class CustomerController {
             transaction.commit();
 
             if (!(save ==null)){
-
+                new CustomAlert(Alert.AlertType.CONFIRMATION,"confirmation","saved !","Customer Saved !").show();
             }
 
         }
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
+        new CustomAlert(Alert.AlertType.INFORMATION,"confirmation","saved !","Customer Saved !").show();
+
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {

@@ -16,7 +16,7 @@
    <children>
       <ImageView fitHeight="453.0" fitWidth="678.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../aseets/admin.png" />
+            <Image url="@../assets/admin.png" />
          </image>
       </ImageView>
       <JFXTextField fx:id="txtName" focusColor="#b10909" labelFloat="true" layoutX="24.0" layoutY="79.0" prefHeight="25.0" prefWidth="162.0" promptText="Item Name" unFocusColor="#ff894f">
@@ -47,7 +47,7 @@
       <Label layoutX="476.0" layoutY="88.0" text="Select ID" />
       <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="4.0" layoutY="12.0" onMouseClicked="#btnBackClicked" onMouseEntered="#mouseEnterd" onMouseExited="#mouseExsits" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../aseets/back.png" />
+            <Image url="@../assets/back.png" />
          </image>
       </ImageView>
       <TableView fx:id="tblItem" layoutX="26.0" layoutY="226.0" prefHeight="218.0" prefWidth="628.0">

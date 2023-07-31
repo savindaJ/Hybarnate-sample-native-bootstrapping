@@ -14,13 +14,13 @@ public class CustomAlert extends Alert {
         String image = null;
         switch (alertType) {
             case ERROR:
-                image = "/asset/";
+                image = "/assets/icons8-errors-264.png";
                 break;
             case INFORMATION:
-                image = "/asset/";
+                image = "/assets/icons8-windows-update.gif";
                 break;
             case WARNING:
-                image = "/asset/";
+                image = "/assets/icons8-error.gif";
                 break;
         }
         if (image !=null){

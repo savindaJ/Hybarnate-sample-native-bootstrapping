@@ -10,17 +10,17 @@
    <children>
       <ImageView fx:id="imgCustomer" fitHeight="100.0" fitWidth="100.0" layoutX="52.0" layoutY="108.0" onMouseClicked="#btnCustomerClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../aseets/service-header.png" />
+            <Image url="@../assets/service-header.png" />
          </image>
       </ImageView>
       <ImageView fx:id="imgItem" fitHeight="100.0" fitWidth="100.0" layoutX="228.0" layoutY="108.0" onMouseClicked="#btnItemClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../aseets/skill-header.png" />
+            <Image url="@../assets/skill-header.png" />
          </image>
       </ImageView>
       <ImageView fx:id="imgOrder" fitHeight="100.0" fitWidth="100.0" layoutX="400.0" layoutY="108.0" onMouseClicked="#btnOrderClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../aseets/project-header.png" />
+            <Image url="@../assets/project-header.png" />
          </image>
       </ImageView>
       <Label fx:id="lblTitle" alignment="CENTER" layoutX="102.0" layoutY="279.0" prefHeight="28.0" prefWidth="356.0" text="Home" textFill="#f8ab3f">
