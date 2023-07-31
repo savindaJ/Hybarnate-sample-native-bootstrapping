@@ -44,7 +44,21 @@ public class MenuController {
         }
     }
 
-    public void btnItemClick(MouseEvent mouseEvent) {
+    public void btnItemClick(MouseEvent mouseEvent) throws IOException {
+        Parent root = null;
+        root = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/item.fxml")));
+        if (root != null) {
+            Scene subScene = new Scene(root);
+            Stage primaryStage = (Stage) this.root.getScene().getWindow();
+            primaryStage.setScene(subScene);
+            primaryStage.centerOnScreen();
+
+            TranslateTransition tt = new TranslateTransition(Duration.millis(350), subScene.getRoot());
+            tt.setFromX(-subScene.getWidth());
+            tt.setToX(0);
+            tt.play();
+
+        }
     }
 
     public void btnOrderClick(MouseEvent mouseEvent) {
