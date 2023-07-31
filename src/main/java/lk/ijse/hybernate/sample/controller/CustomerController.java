@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,6 +56,7 @@ public class CustomerController {
     }
 
     private void setCustomerID() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
 
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
 
@@ -70,9 +73,9 @@ public class CustomerController {
             transaction.commit();
 
             for (Customer customer : resultList){
-//                id.add(customer.getId());
+                obList.add(customer.getId());
             }
-
+            cmbId.setItems(obList);
         }
     }
 
