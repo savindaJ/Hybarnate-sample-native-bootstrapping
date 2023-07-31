@@ -46,8 +46,9 @@ public class CustomerController {
 
             if (!(save ==null)){
                 new CustomAlert(Alert.AlertType.CONFIRMATION,"confirmation","saved !","Customer Saved !").show();
+            }else {
+                new CustomAlert(Alert.AlertType.ERROR,"Error !","Not Saved !","Customer not Saved Try again !").show();
             }
-
         }
     }
 
@@ -57,7 +58,7 @@ public class CustomerController {
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
-
+        Session session = SessionFactoryConfigToProperty.getInstance().getSession();
     }
 
     public void cmbIdOnAction(ActionEvent actionEvent) {
