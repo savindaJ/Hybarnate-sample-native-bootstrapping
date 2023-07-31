@@ -1,10 +1,12 @@
 package lk.ijse.hybernate.sample.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -36,6 +38,15 @@ public class CustomerController {
     public TableView tblCustomer;
 
     public AnchorPane root;
+    public JFXButton btnAddNew;
+    public JFXButton btnSave;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
+
+    @FXML
+    void initialize(){
+        initUi();
+    }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
@@ -74,7 +85,8 @@ public class CustomerController {
     }
 
     public void cmbIdOnAction(ActionEvent actionEvent) {
-
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
     }
 
     private void initUi(){
@@ -82,6 +94,14 @@ public class CustomerController {
         txtId.clear();
         txtId.clear();
         txtSalary.clear();
+        txtAddress.setDisable(true);
+        txtId.setDisable(true);
+        txtId.setDisable(true);
+        txtSalary.setDisable(true);
+        btnSave.setDisable(true);
+        txtName.setDisable(true);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
     }
 
     public void btnBackClicked(MouseEvent event) throws IOException {
@@ -130,5 +150,15 @@ public class CustomerController {
             scaleT.play();
             icon.setEffect(null);
         }
+    }
+
+    public void btnAddNewOnAction(ActionEvent actionEvent) {
+        txtAddress.setDisable(false);
+        txtId.setDisable(false);
+        txtId.setDisable(false);
+        txtSalary.setDisable(false);
+        btnSave.setDisable(false);
+        txtName.setDisable(false);
+        btnSave.requestFocus();
     }
 }

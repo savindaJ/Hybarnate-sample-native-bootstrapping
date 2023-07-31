@@ -3,14 +3,7 @@ package lk.ijse.hybernate.sample;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import lk.ijse.hybernate.sample.config.SessionFactoryConfig;
-import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
-import lk.ijse.hybernate.sample.entity.Customer;
-import lk.ijse.hybernate.sample.entity.Item;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 public class AppInitializer extends Application {
     public static void main(String[] args) {
