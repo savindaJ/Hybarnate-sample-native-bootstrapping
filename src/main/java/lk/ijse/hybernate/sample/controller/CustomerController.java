@@ -25,8 +25,12 @@ import lk.ijse.hybernate.sample.util.CustomAlert;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class CustomerController {
@@ -46,6 +50,30 @@ public class CustomerController {
     @FXML
     void initialize(){
         initUi();
+        setCustomerID();
+    }
+
+    private void setCustomerID() {
+
+        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+
+            Transaction transaction = session.beginTransaction();
+
+            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+
+            CriteriaQuery<Customer> query = criteriaBuilder.createQuery(Customer.class);
+
+            query.from(Customer.class);
+
+            List<Customer> resultList = session.createQuery(query).getResultList();
+
+            transaction.commit();
+
+            for (Customer customer : resultList){
+//                id.add(customer.getId());
+            }
+
+        }
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
