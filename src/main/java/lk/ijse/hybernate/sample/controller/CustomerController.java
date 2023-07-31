@@ -37,6 +37,7 @@ public class CustomerController {
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
+
     }
 
     public void cmbIdOnAction(ActionEvent actionEvent) {
