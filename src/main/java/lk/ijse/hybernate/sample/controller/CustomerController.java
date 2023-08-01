@@ -129,10 +129,13 @@ public class CustomerController {
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
-
             Transaction transaction = session.beginTransaction();
-
-//            session.delete();
+            Customer customer = session.get(Customer.class, cmbId.getValue());
+            session.delete(customer);
+            transaction.commit();
+            new CustomAlert(Alert.AlertType.CONFIRMATION,"Delete ","Deleted !","Customer Completed Deleted !").show();
+        }catch (Exception e){
+            new CustomAlert(Alert.AlertType.ERROR,"Delete ","Deleted !",e.getMessage()).show();
         }
     }
 
