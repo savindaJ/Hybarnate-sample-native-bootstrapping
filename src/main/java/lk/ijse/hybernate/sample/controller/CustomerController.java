@@ -31,7 +31,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -40,7 +39,7 @@ public class CustomerController {
     public JFXTextField txtAddress;
     public JFXTextField txtSalary;
     public JFXTextField txtId;
-    public JFXComboBox cmbId;
+    public JFXComboBox<String> cmbId;
     public TableView tblCustomer;
 
     public AnchorPane root;
@@ -58,6 +57,16 @@ public class CustomerController {
     private void setCustomerID() {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
+        List<Customer> resultList = getAll();
+
+            for (Customer customer : resultList){
+                obList.add(customer.getId());
+            }
+            cmbId.setItems(obList);
+        }
+
+    private List<Customer> getAll() {
+
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
@@ -72,12 +81,10 @@ public class CustomerController {
 
             transaction.commit();
 
-            for (Customer customer : resultList){
-                obList.add(customer.getId());
-            }
-            cmbId.setItems(obList);
-        }
+            return resultList;
     }
+
+}
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
@@ -105,7 +112,8 @@ public class CustomerController {
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
-//            session.get(Customer.class,);
+            Customer customer = session.get(Customer.class, cmbId.getValue());
+            transaction.commit();
         }
 
         new CustomAlert(Alert.AlertType.INFORMATION,"Update","Updated !","Customer Updated !").show();
@@ -124,6 +132,19 @@ public class CustomerController {
     public void cmbIdOnAction(ActionEvent actionEvent) {
         btnDelete.setDisable(false);
         btnUpdate.setDisable(false);
+
+        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+
+            Transaction transaction = session.beginTransaction();
+            Customer customer = session.get(Customer.class, cmbId.getValue());
+            transaction.commit();
+
+            txtName.setText(customer.getName());
+            txtSalary.setText(String.valueOf(customer.getSalary()));
+            txtId.setText(customer.getId());
+            txtAddress.setText(customer.getAddress());
+        }
+
     }
 
     private void initUi(){
