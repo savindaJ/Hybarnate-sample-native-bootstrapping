@@ -118,6 +118,28 @@ public class ItemController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
+        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+
+            Transaction transaction = session.beginTransaction();
+
+            Item item = session.get(Item.class, String.valueOf(cmbId.getValue()));
+
+            item.setPrice(Double.valueOf(txtItemPrice.getText()));
+            item.setQty(Integer.valueOf(txtQty.getText()));
+            item.setItemCode(txtCode.getText());
+            item.setName(txtName.getText());
+
+            Serializable save = session.save(item);
+
+            transaction.commit();
+
+            if (!(save ==null))
+                new CustomAlert(Alert.AlertType.INFORMATION,"Update","Updated !","Item Updated !").show();
+            else
+                new CustomAlert(Alert.AlertType.ERROR,"Update","Not Updated !","Item Not Completed Updated !").show();
+        }
+
+
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
