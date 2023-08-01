@@ -43,7 +43,7 @@ public class ItemController {
     public JFXTextField txtQty;
     public JFXTextField txtItemPrice;
     public JFXTextField txtCode;
-    public JFXComboBox cmbId;
+    public JFXComboBox<String> cmbId;
     public TableView tblItem;
 
     public AnchorPane root;
@@ -136,7 +136,7 @@ public class ItemController {
 
             Transaction transaction = session.beginTransaction();
 
-            Item item = session.get(Item.class, String.valueOf(cmbId.getValue()));
+            Item item = session.get(Item.class, cmbId.getValue());
 
             item.setPrice(Double.valueOf(txtItemPrice.getText()));
             item.setQty(Integer.valueOf(txtQty.getText()));
@@ -161,7 +161,7 @@ public class ItemController {
 
             Transaction transaction = session.beginTransaction();
 
-            Item item = session.get(Item.class, String.valueOf(cmbId.getValue()));
+            Item item = session.get(Item.class, cmbId.getValue());
 
             session.delete(item);
 
@@ -169,18 +169,19 @@ public class ItemController {
 
             new CustomAlert(Alert.AlertType.CONFIRMATION,"Delete ","Deleted !","Item Completed Deleted !").show();
 
-            setItemID();
         }catch (Exception e){
             new CustomAlert(Alert.AlertType.ERROR,"Delete ","Not Deleted !",e.getMessage()).show();
         }
     }
 
     public void cmbIdOnAction(ActionEvent actionEvent) {
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
 
-            Item item = session.get(Item.class, String.valueOf(cmbId.getValue()));
+            Item item = session.get(Item.class, cmbId.getValue());
 
             transaction.commit();
 
