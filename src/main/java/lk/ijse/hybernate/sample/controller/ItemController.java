@@ -24,6 +24,7 @@ import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
 import lk.ijse.hybernate.sample.entity.Item;
 import lk.ijse.hybernate.sample.util.CustomAlert;
+import lk.ijse.hybernate.sample.util.tm.ItemTM;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -75,7 +76,11 @@ public class ItemController {
     }
 
     private void fillTable() {
-
+        ObservableList<ItemTM> itemTMS = FXCollections.observableArrayList();
+        for (Item item : getAllItem()) {
+            itemTMS.add(new ItemTM(item.getItemCode(),item.getName(),item.getPrice(),item.getQty()));
+        }
+        tblItem.setItems(itemTMS);
     }
 
     private void setItemID() {
