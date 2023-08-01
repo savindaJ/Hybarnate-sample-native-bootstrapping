@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +31,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -76,7 +79,11 @@ public class ItemController {
     }
 
     private void setItemID() {
-
+        ObservableList <String> idList = FXCollections.observableArrayList();
+        for (Item item : getAllItem()) {
+            idList.add(item.getItemCode());
+        }
+        cmbId.setItems(idList);
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
