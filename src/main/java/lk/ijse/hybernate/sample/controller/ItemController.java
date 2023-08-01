@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -54,6 +55,14 @@ public class ItemController {
     void initialize(){
         setItemID();
         fillTable();
+        setCellValueFactory();
+    }
+
+    private void setCellValueFactory() {
+        colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("item name"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
 
     private List<Item> getAllItem(){
