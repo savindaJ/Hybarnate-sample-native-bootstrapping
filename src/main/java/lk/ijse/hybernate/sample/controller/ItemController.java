@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
@@ -36,6 +37,10 @@ public class ItemController {
     public TableView tblItem;
 
     public AnchorPane root;
+    public TableColumn colCode;
+    public TableColumn colItemName;
+    public TableColumn colQty;
+    public TableColumn colPrice;
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
@@ -108,5 +113,8 @@ public class ItemController {
             scaleT.play();
             icon.setEffect(null);
         }
+    }
+
+    public void btnAddNewOnAction(ActionEvent actionEvent) {
     }
 }
