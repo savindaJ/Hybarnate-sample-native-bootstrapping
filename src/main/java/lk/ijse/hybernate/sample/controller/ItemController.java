@@ -124,6 +124,19 @@ public class ItemController {
     }
 
     public void cmbIdOnAction(ActionEvent actionEvent) {
+        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+
+            Transaction transaction = session.beginTransaction();
+
+            Item item = session.get(Item.class, String.valueOf(cmbId.getValue()));
+
+            transaction.commit();
+
+            txtCode.setText(item.getItemCode());
+            txtName.setText(item.getName());
+            txtQty.setText(String.valueOf(item.getQty()));
+            txtItemPrice.setText(String.valueOf(item.getPrice()));
+        }
     }
 
     public void btnBackClicked(MouseEvent event) throws IOException {
