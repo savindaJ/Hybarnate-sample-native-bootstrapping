@@ -106,6 +106,7 @@ public class CustomerController {
                 new CustomAlert(Alert.AlertType.ERROR,"Error !","Not Saved !","Customer not Saved Try again !").show();
             }
         }
+        setCustomerID();
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
@@ -125,6 +126,7 @@ public class CustomerController {
             else
                 new CustomAlert(Alert.AlertType.ERROR,"Update","Not Updated !","Customer Not Completed Updated !").show();
         }
+        initUi();
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
@@ -134,9 +136,12 @@ public class CustomerController {
             session.delete(customer);
             transaction.commit();
             new CustomAlert(Alert.AlertType.CONFIRMATION,"Delete ","Deleted !","Customer Completed Deleted !").show();
+            setCustomerID();
+            cmbId.setValue("");
         }catch (Exception e){
             new CustomAlert(Alert.AlertType.ERROR,"Delete ","Deleted !",e.getMessage()).show();
         }
+        initUi();
     }
 
     public void cmbIdOnAction(ActionEvent actionEvent) {
