@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,8 +25,11 @@ import lk.ijse.hybernate.sample.util.CustomAlert;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class ItemController {
@@ -41,6 +45,39 @@ public class ItemController {
     public TableColumn colItemName;
     public TableColumn colQty;
     public TableColumn colPrice;
+
+    @FXML
+    void initialize(){
+        setItemID();
+        fillTable();
+    }
+
+    private List<Item> getAllItem(){
+        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+
+            Transaction transaction = session.beginTransaction();
+
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+
+            CriteriaQuery<Item> query = builder.createQuery(Item.class);
+
+            query.from(Item.class);
+
+            List<Item> resultList = session.createQuery(query).getResultList();
+
+            transaction.commit();
+
+            return resultList;
+        }
+    }
+
+    private void fillTable() {
+
+    }
+
+    private void setItemID() {
+
+    }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
