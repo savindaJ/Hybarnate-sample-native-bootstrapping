@@ -181,6 +181,7 @@ public class CustomerController {
     public void cmbIdOnAction(ActionEvent actionEvent) {
         btnDelete.setDisable(false);
         btnUpdate.setDisable(false);
+        btnSave.setDisable(true);
 
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
 
@@ -273,5 +274,7 @@ public class CustomerController {
         btnSave.setDisable(false);
         txtName.setDisable(false);
         txtName.requestFocus();
+        btnUpdate.setDisable(true);
+        btnDelete.setDisable(true);
     }
 }
