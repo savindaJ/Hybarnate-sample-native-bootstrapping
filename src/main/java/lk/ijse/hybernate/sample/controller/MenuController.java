@@ -28,6 +28,8 @@ public class MenuController {
     @FXML
     Parent root;
 
+
+
     public void btnCustomerClick(MouseEvent mouseEvent) throws IOException {
         Parent root = null;
         root = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customer.fxml")));

@@ -24,7 +24,7 @@ public class HomeController {
     private JFXButton btnLogin;
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
-        if (txtUserName.getText().equals("savinda") && txtPassword.getText().equals("savinda")){
+        if (txtUserName.getText().equals("") && txtPassword.getText().equals("")){
             URL resource = this.getClass().getResource("/view/menu.fxml");
             Parent root = FXMLLoader.load(resource);
             Scene scene = new Scene(root);
