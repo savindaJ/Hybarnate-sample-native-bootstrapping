@@ -73,9 +73,9 @@ public class ItemController {
         btnSave.setDisable(true);
     }
     private void setCellValueFactory() {
-        colCode.setCellValueFactory(new PropertyValueFactory<>("Code"));
+        colCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
-        colItemName.setCellValueFactory(new PropertyValueFactory<>("Item Name"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
 
