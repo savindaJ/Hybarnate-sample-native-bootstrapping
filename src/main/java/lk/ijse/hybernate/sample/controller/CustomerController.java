@@ -113,11 +113,18 @@ public class CustomerController {
 
             Transaction transaction = session.beginTransaction();
             Customer customer = session.get(Customer.class, cmbId.getValue());
+            customer.setName(txtName.getText());
+            customer.setId(txtId.getText());
+            customer.setAddress(txtAddress.getText());
+            customer.setSalary(Double.valueOf(txtSalary.getText()));
+            Serializable save = session.save(customer);
             transaction.commit();
+
+            if (!(save ==null))
+                new CustomAlert(Alert.AlertType.INFORMATION,"Update","Updated !","Customer Updated !").show();
+            else
+                new CustomAlert(Alert.AlertType.ERROR,"Update","Not Updated !","Customer Not Completed Updated !").show();
         }
-
-        new CustomAlert(Alert.AlertType.INFORMATION,"Update","Updated !","Customer Updated !").show();
-
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
