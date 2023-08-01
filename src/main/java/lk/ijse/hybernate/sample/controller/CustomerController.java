@@ -144,7 +144,13 @@ public class CustomerController {
             txtId.setText(customer.getId());
             txtAddress.setText(customer.getAddress());
         }
-
+        txtAddress.setDisable(false);
+        txtId.setDisable(false);
+        txtId.setDisable(false);
+        txtSalary.setDisable(false);
+        btnSave.setDisable(false);
+        txtName.setDisable(false);
+        txtName.requestFocus();
     }
 
     private void initUi(){
