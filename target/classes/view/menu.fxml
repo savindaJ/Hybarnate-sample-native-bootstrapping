@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,25 +10,70 @@
 
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hybernate.sample.controller.MenuController">
    <children>
-      <ImageView fx:id="imgCustomer" fitHeight="100.0" fitWidth="100.0" layoutX="52.0" layoutY="108.0" onMouseClicked="#btnCustomerClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="429.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/vehiclein.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="227.0" fitWidth="411.0" layoutX="150.0" layoutY="87.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/submenu.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgCustomer" fitHeight="70.0" fitWidth="70.0" layoutX="164.0" layoutY="165.0" onMouseClicked="#btnCustomerClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/service-header.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
       </ImageView>
-      <ImageView fx:id="imgItem" fitHeight="100.0" fitWidth="100.0" layoutX="228.0" layoutY="108.0" onMouseClicked="#btnItemClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgItem" fitHeight="70.0" fitWidth="70.0" layoutX="269.0" layoutY="166.0" onMouseClicked="#btnItemClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/skill-header.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
       </ImageView>
-      <ImageView fx:id="imgOrder" fitHeight="100.0" fitWidth="100.0" layoutX="400.0" layoutY="108.0" onMouseClicked="#btnOrderClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgOrder" fitHeight="70.0" fitWidth="70.0" layoutX="371.0" layoutY="166.0" onMouseClicked="#btnOrderClick" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/project-header.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
       </ImageView>
-      <Label fx:id="lblTitle" alignment="CENTER" layoutX="102.0" layoutY="279.0" prefHeight="28.0" prefWidth="356.0" text="Home" textFill="#f8ab3f">
+      <Label fx:id="lblTitle" alignment="CENTER" layoutX="125.0" layoutY="316.0" prefHeight="28.0" prefWidth="356.0" text="Home" textFill="#1505ff" underline="true">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
+      <Label layoutX="184.0" layoutY="14.0" text="Sample Mangement System" textFill="#6d85ff" underline="true">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="277.0" layoutY="109.0" text="Menu" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="378.0" text="www.ijse.lk" />
+      <Label layoutX="524.0" layoutY="379.0" text="version 1.0.0" />
+      <ImageView fx:id="btnBack" fitHeight="41.0" fitWidth="39.0" layoutX="10.0" layoutY="6.0" onMouseClicked="#backOnAction" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

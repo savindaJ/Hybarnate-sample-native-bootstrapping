@@ -15,7 +15,7 @@
             <Image url="@../assets/vehiclein.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="227.0" fitWidth="411.0" layoutX="150.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="227.0" fitWidth="411.0" layoutX="150.0" layoutY="87.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/submenu.png" />
          </image>
@@ -70,5 +70,10 @@
       </Label>
       <Label layoutX="14.0" layoutY="378.0" text="www.ijse.lk" />
       <Label layoutX="524.0" layoutY="379.0" text="version 1.0.0" />
+      <ImageView fx:id="btnBack" fitHeight="41.0" fitWidth="39.0" layoutX="10.0" layoutY="6.0" onMouseClicked="#backOnAction" onMouseEntered="#mouseenterd" onMouseExited="#mouseexsits" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

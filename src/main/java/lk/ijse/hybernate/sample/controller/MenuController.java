@@ -23,6 +23,7 @@ public class MenuController {
     public ImageView imgOrder;
     public ImageView imgItem;
     public ImageView imgCustomer;
+    public ImageView btnBack;
 
     @FXML
     Parent root;
@@ -78,6 +79,8 @@ public class MenuController {
                 case "imgItem" :
                     lblTitle.setText("Goto Item Form");
                     break;
+                case "btnBack" :
+                    lblTitle.setText("LogOut !");
                 default:
                     break;
             }
@@ -108,6 +111,24 @@ public class MenuController {
             scaleT.setToY(1);
             scaleT.play();
             icon.setEffect(null);
+        }
+        lblTitle.setText("Home");
+    }
+
+    public void backOnAction(MouseEvent event) throws IOException {
+        Parent root = null;
+        root = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/home.fxml")));
+        if (root != null) {
+            Scene subScene = new Scene(root);
+            Stage primaryStage = (Stage) this.root.getScene().getWindow();
+            primaryStage.setScene(subScene);
+            primaryStage.centerOnScreen();
+
+            TranslateTransition tt = new TranslateTransition(Duration.millis(350), subScene.getRoot());
+            tt.setFromX(-subScene.getWidth());
+            tt.setToX(0);
+            tt.play();
+
         }
     }
 }
