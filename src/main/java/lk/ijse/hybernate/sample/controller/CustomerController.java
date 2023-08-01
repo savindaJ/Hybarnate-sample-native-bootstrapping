@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -52,6 +53,19 @@ public class CustomerController {
     void initialize(){
         initUi();
         setCustomerID();
+        setTbData();
+        setCellValueFactory();
+    }
+
+    private void setCellValueFactory() {
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colNic.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        colGmail.setCellValueFactory(new PropertyValueFactory<>("id"));
+    }
+
+    private void setTbData() {
+
     }
 
     private void setCustomerID() {
