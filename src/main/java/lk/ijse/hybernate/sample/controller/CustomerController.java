@@ -76,7 +76,11 @@ public class CustomerController {
         List<Customer> all = getAll();
 
         for (Customer customer : all){
-            tm.add(new CustomerTM(customer.getName(), customer.getAddress() , customer.getSalary(), customer.getId()));
+            tm.add(new CustomerTM(
+                    customer.getName(),
+                    customer.getAddress() ,
+                    customer.getSalary(),
+                    customer.getId()));
         }
         tblCustomer.setItems(tm);
     }
@@ -134,6 +138,7 @@ public class CustomerController {
             }
         }
         setCustomerID();
+        setTbData();
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
@@ -154,6 +159,7 @@ public class CustomerController {
                 new CustomAlert(Alert.AlertType.ERROR,"Update","Not Updated !","Customer Not Completed Updated !").show();
         }
         initUi();
+        setTbData();
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
@@ -169,6 +175,7 @@ public class CustomerController {
             new CustomAlert(Alert.AlertType.ERROR,"Delete ","Deleted !",e.getMessage()).show();
         }
         initUi();
+        setTbData();
     }
 
     public void cmbIdOnAction(ActionEvent actionEvent) {
