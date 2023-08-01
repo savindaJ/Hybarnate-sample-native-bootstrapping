@@ -26,6 +26,7 @@ import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
 import lk.ijse.hybernate.sample.entity.Customer;
 import lk.ijse.hybernate.sample.util.CustomAlert;
+import lk.ijse.hybernate.sample.util.tm.CustomerTM;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -42,17 +43,17 @@ public class CustomerController {
     public JFXTextField txtSalary;
     public JFXTextField txtId;
     public JFXComboBox<String> cmbId;
-    public TableView tblCustomer;
+    public TableView<CustomerTM> tblCustomer;
 
     public AnchorPane root;
     public JFXButton btnAddNew;
     public JFXButton btnSave;
     public JFXButton btnUpdate;
     public JFXButton btnDelete;
-    public TableColumn colId;
-    public TableColumn colName;
-    public TableColumn colAddress;
-    public TableColumn colSalary;
+    public TableColumn<Object, Object> colId;
+    public TableColumn<Object, Object> colName;
+    public TableColumn<Object, Object> colAddress;
+    public TableColumn<Object, Object> colSalary;
 
     @FXML
     void initialize(){
@@ -70,8 +71,14 @@ public class CustomerController {
     }
 
     private void setTbData() {
+        ObservableList<CustomerTM> tm = FXCollections.observableArrayList();
 
         List<Customer> all = getAll();
+
+        for (Customer customer : all){
+            tm.add(new CustomerTM(customer.getName(), customer.getAddress() , customer.getSalary(), customer.getId()));
+        }
+        tblCustomer.setItems(tm);
     }
 
     private void setCustomerID() {
