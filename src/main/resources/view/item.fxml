@@ -38,9 +38,9 @@
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXButton layoutX="467.0" layoutY="184.0" onAction="#btnSaveOnAction" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Save" />
-      <JFXButton layoutX="529.0" layoutY="184.0" onAction="#btnUpdateOnAction" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Update" />
-      <JFXButton layoutX="593.0" layoutY="184.0" onAction="#btnDeleteOnAction" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Delete" />
+      <JFXButton fx:id="btnSave" layoutX="467.0" layoutY="184.0" onAction="#btnSaveOnAction" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Save" />
+      <JFXButton fx:id="btnUpdate" layoutX="529.0" layoutY="184.0" onAction="#btnUpdateOnAction" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Update" />
+      <JFXButton fx:id="btnDelete" layoutX="593.0" layoutY="184.0" onAction="#btnDeleteOnAction" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #F6B12F;" text="Delete" />
       <JFXComboBox fx:id="cmbId" focusColor="#b438dd" layoutX="476.0" layoutY="102.0" onAction="#cmbIdOnAction" prefHeight="25.0" prefWidth="162.0" />
       <JFXButton layoutX="593.0" layoutY="19.0" onAction="#btnAddNewOnAction" style="-fx-background-color: #162A5F;" text="Add new +" textFill="#f5f5f5" />
       <Label layoutX="476.0" layoutY="88.0" text="Select ID" />

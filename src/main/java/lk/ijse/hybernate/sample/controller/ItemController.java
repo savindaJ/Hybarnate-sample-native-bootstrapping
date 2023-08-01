@@ -1,5 +1,6 @@
 package lk.ijse.hybernate.sample.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.ScaleTransition;
@@ -50,14 +51,27 @@ public class ItemController {
     public TableColumn colItemName;
     public TableColumn colQty;
     public TableColumn colPrice;
+    public JFXButton btnSave;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
 
     @FXML
     void initialize(){
         setItemID();
         fillTable();
         setCellValueFactory();
+        initUI();
     }
 
+    private void initUI(){
+        txtItemPrice.setDisable(true);
+        txtName.setDisable(true);
+        txtQty.setDisable(true);
+        txtCode.setDisable(true);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+        btnSave.setDisable(true);
+    }
     private void setCellValueFactory() {
         colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
@@ -225,5 +239,6 @@ public class ItemController {
     }
 
     public void btnAddNewOnAction(ActionEvent actionEvent) {
+
     }
 }
