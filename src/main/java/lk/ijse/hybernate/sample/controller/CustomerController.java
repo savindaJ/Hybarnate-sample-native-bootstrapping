@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
@@ -48,6 +49,10 @@ public class CustomerController {
     public JFXButton btnSave;
     public JFXButton btnUpdate;
     public JFXButton btnDelete;
+    public TableColumn colId;
+    public TableColumn colName;
+    public TableColumn colAddress;
+    public TableColumn colSalary;
 
     @FXML
     void initialize(){
@@ -59,13 +64,14 @@ public class CustomerController {
 
     private void setCellValueFactory() {
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colNic.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colStatus.setCellValueFactory(new PropertyValueFactory<>("salary"));
-        colGmail.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
     }
 
     private void setTbData() {
 
+        List<Customer> all = getAll();
     }
 
     private void setCustomerID() {

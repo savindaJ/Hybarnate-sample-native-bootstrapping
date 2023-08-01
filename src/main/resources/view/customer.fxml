@@ -42,10 +42,10 @@
       <Label layoutX="480.0" layoutY="83.0" text="Select ID" />
       <TableView fx:id="tblCustomer" layoutX="28.0" layoutY="239.0" prefHeight="209.0" prefWidth="624.0">
         <columns>
-          <TableColumn prefWidth="150.0" text="ID" />
-          <TableColumn minWidth="0.0" prefWidth="153.0" text="Name" />
-            <TableColumn prefWidth="150.0" text="Address" />
-            <TableColumn minWidth="0.0" prefWidth="170.0" text="Salry" />
+          <TableColumn fx:id="colId" prefWidth="150.0" text="ID" />
+          <TableColumn fx:id="colName" minWidth="0.0" prefWidth="153.0" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="150.0" text="Address" />
+            <TableColumn fx:id="colSalary" minWidth="0.0" prefWidth="170.0" text="Salry" />
         </columns>
       </TableView>
       <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="8.0" layoutY="7.0" onMouseClicked="#btnBackClicked" onMouseEntered="#mouseEnterd" onMouseExited="#mouseExsits" pickOnBounds="true" preserveRatio="true">
