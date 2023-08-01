@@ -73,9 +73,9 @@ public class ItemController {
         btnSave.setDisable(true);
     }
     private void setCellValueFactory() {
-        colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colCode.setCellValueFactory(new PropertyValueFactory<>("Code"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
-        colItemName.setCellValueFactory(new PropertyValueFactory<>("item name"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("Item Name"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
 
@@ -239,6 +239,11 @@ public class ItemController {
     }
 
     public void btnAddNewOnAction(ActionEvent actionEvent) {
+        btnSave.setDisable(false);
+        txtItemPrice.setDisable(false);
+        txtName.setDisable(false);
+        txtQty.setDisable(false);
+        txtCode.setDisable(false);
 
     }
 }
