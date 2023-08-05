@@ -24,6 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
+import lk.ijse.hybernate.sample.config.StandardConfig;
 import lk.ijse.hybernate.sample.entity.Item;
 import lk.ijse.hybernate.sample.util.CustomAlert;
 import lk.ijse.hybernate.sample.util.tm.ItemTM;
@@ -80,7 +81,7 @@ public class ItemController {
     }
 
     private List<Item> getAllItem(){
-        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+        try (Session session = StandardConfig.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
 
@@ -115,7 +116,7 @@ public class ItemController {
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
-        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+        try (Session session = StandardConfig.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
 
@@ -133,7 +134,7 @@ public class ItemController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+        try (Session session = StandardConfig.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
 
@@ -157,7 +158,7 @@ public class ItemController {
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
-        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+        try (Session session = StandardConfig.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
 
@@ -183,7 +184,7 @@ public class ItemController {
         txtQty.setDisable(false);
         txtCode.setDisable(false);
 
-        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+        try (Session session = StandardConfig.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
 

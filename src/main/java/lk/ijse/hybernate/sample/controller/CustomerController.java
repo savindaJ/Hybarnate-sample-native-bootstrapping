@@ -26,6 +26,7 @@ import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
 import lk.ijse.hybernate.sample.config.StandardConfig;
 import lk.ijse.hybernate.sample.entity.Customer;
+import lk.ijse.hybernate.sample.repository.CustomerRepository;
 import lk.ijse.hybernate.sample.util.CustomAlert;
 import lk.ijse.hybernate.sample.util.tm.CustomerTM;
 import org.hibernate.Session;
@@ -184,19 +185,24 @@ public class CustomerController {
         btnUpdate.setDisable(false);
         btnSave.setDisable(true);
 
-        try (Session session = StandardConfig.getInstance().getSession()) {
+      /*  try (Session session = StandardConfig.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
             Customer customer = session.get(Customer.class, cmbId.getValue());
-            transaction.commit();
+            transaction.commit();*/
 
-            txtName.setText(customer.getName());
-            txtSalary.setText(String.valueOf(customer.getSalary()));
-            txtId.setText(customer.getId());
-            txtAddress.setText(customer.getAddress());
-        }catch (Exception e){
+     /*   }catch (Exception e){
             //toDo : implement will !
-        }
+        }*/
+
+        CustomerRepository repository = new CustomerRepository();
+
+        Customer customer = repository.getCustomer(cmbId.getValue());
+
+        txtName.setText(customer.getName());
+        txtSalary.setText(String.valueOf(customer.getSalary()));
+        txtId.setText(customer.getId());
+        txtAddress.setText(customer.getAddress());
 
         txtAddress.setDisable(false);
         txtId.setDisable(false);

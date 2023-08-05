@@ -8,7 +8,6 @@ import org.hibernate.cfg.Configuration;
 
 public class StandardConfig {
     private static final SessionFactory factory;
-
     private static StandardConfig config;
 
     static {
