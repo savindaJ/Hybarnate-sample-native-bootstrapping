@@ -51,17 +51,18 @@ public class CustomerRepository {
 
             transaction.commit();
 
-            session.close();
-
             return true;
 
         }catch (Exception e){
 
             transaction.rollback();
 
+            return false;
+
+        }finally {
+
             session.close();
 
-            return false;
         }
     }
 }
