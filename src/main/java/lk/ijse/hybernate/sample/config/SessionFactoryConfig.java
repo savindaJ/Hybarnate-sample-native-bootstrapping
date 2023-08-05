@@ -25,7 +25,9 @@ public class SessionFactoryConfig {
 
         //toDo : complex bootstrapping !
 
-        StandardServiceRegistry builder = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+        StandardServiceRegistry builder = new StandardServiceRegistryBuilder()
+                .configure("hibernate.cfg.xml").build();
+
         Metadata meta = new MetadataSources(builder).addAnnotatedClass(Customer.class).addAnnotatedClass(Item.class).
                 getMetadataBuilder().
                 applyImplicitNamingStrategy(ImplicitNamingStrategyComponentPathImpl.INSTANCE).
@@ -36,15 +38,19 @@ public class SessionFactoryConfig {
 
         //toDo : simplify in this native bootstrapping !
 
-        SessionFactory factory = new MetadataSources(new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build()).addAnnotatedClass(Customer.class).addAnnotatedClass(Item.class).
+        SessionFactory factory = new MetadataSources(
+                new StandardServiceRegistryBuilder()
+                        .configure("hibernate.cfg.xml")
+                        .build())
+                .addAnnotatedClass(Customer.class)
+                .addAnnotatedClass(Item.class).
                 getMetadataBuilder().
                 applyImplicitNamingStrategy(ImplicitNamingStrategyComponentPathImpl.INSTANCE).
-                build().buildSessionFactory();
+                build()
+                .buildSessionFactory();
 
 //        return sessionFactory.openSession();
         return factory.openSession();
-
-
     }
 
 }
