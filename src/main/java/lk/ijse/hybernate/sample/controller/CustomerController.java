@@ -40,6 +40,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class CustomerController {
+
+    {
+        repository = new CustomerRepository();
+    }
+    private CustomerRepository repository;
     public JFXTextField txtName;
     public JFXTextField txtAddress;
     public JFXTextField txtSalary;
@@ -120,7 +125,7 @@ public class CustomerController {
 }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
-        try (Session session = StandardConfig.getInstance().getSession()) {
+       /* try (Session session = StandardConfig.getInstance().getSession()) {
             Transaction transaction = session.beginTransaction();
             Customer customer = null;
             Serializable save=null;
@@ -130,15 +135,22 @@ public class CustomerController {
                 transaction.commit();
             }catch (Exception e){
 //                new CustomAlert(Alert.AlertType.ERROR,"Error !","Empty !","Data is Empty Try again !").show();
-            }
+            }*/
 
-            if (!(save ==null)){
+        Customer customer = new Customer(
+                txtName.getText(),
+                txtAddress.getText(),
+                Double.parseDouble(txtSalary.getText()),
+                txtId.getText());
+
+        boolean save = repository.saveCustomer(customer);
+
+        if (save){
                 initUi();
                 new CustomAlert(Alert.AlertType.CONFIRMATION,"confirmation","saved !","Customer Saved !").show();
             }else {
                 new CustomAlert(Alert.AlertType.ERROR,"Error !","Not Saved !","Customer not Saved Try again !").show();
             }
-        }
         setCustomerID();
         setTbData();
     }
@@ -194,8 +206,6 @@ public class CustomerController {
      /*   }catch (Exception e){
             //toDo : implement will !
         }*/
-
-        CustomerRepository repository = new CustomerRepository();
 
         Customer customer = repository.getCustomer(cmbId.getValue());
 
