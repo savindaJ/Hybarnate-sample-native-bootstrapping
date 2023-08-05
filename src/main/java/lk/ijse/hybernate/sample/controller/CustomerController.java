@@ -193,7 +193,10 @@ public class CustomerController {
             txtSalary.setText(String.valueOf(customer.getSalary()));
             txtId.setText(customer.getId());
             txtAddress.setText(customer.getAddress());
+        }catch (Exception e){
+            //toDo : implement will !
         }
+
         txtAddress.setDisable(false);
         txtId.setDisable(false);
         txtId.setDisable(false);
