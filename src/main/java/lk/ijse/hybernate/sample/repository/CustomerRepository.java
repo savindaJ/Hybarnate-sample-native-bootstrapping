@@ -44,13 +44,24 @@ public class CustomerRepository {
 
     public boolean deleteCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
+        /*add exception handling part !*/
+        try {
 
-        session.delete(customer);
+            session.delete(customer);
 
-        transaction.commit();
+            transaction.commit();
 
-        session.close();
+            session.close();
 
-        return true;
+            return true;
+
+        }catch (Exception e){
+
+            transaction.rollback();
+
+            session.close();
+
+            return false;
+        }
     }
 }
