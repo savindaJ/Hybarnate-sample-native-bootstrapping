@@ -44,7 +44,7 @@ public class CustomerController {
     {
         repository = new CustomerRepository();
     }
-    private CustomerRepository repository;
+    private final CustomerRepository repository;
     public JFXTextField txtName;
     public JFXTextField txtAddress;
     public JFXTextField txtSalary;
@@ -151,7 +151,7 @@ public class CustomerController {
             }else {
                 new CustomAlert(Alert.AlertType.ERROR,"Error !","Not Saved !","Customer not Saved Try again !").show();
             }
-        setCustomerID();
+//        setCustomerID();
         setTbData();
     }
 
@@ -167,13 +167,14 @@ public class CustomerController {
             Serializable save = session.save(customer);
             transaction.commit();
 
-            if (!(save ==null))
+            if (!(save == null))
                 new CustomAlert(Alert.AlertType.INFORMATION,"Update","Updated !","Customer Updated !").show();
             else
                 new CustomAlert(Alert.AlertType.ERROR,"Update","Not Updated !","Customer Not Completed Updated !").show();
         }
         initUi();
         setTbData();
+        cmbId.setValue("");
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
@@ -207,12 +208,16 @@ public class CustomerController {
             //toDo : implement will !
         }*/
 
-        Customer customer = repository.getCustomer(cmbId.getValue());
+        try {
+            Customer customer = repository.getCustomer(cmbId.getValue());
 
-        txtName.setText(customer.getName());
-        txtSalary.setText(String.valueOf(customer.getSalary()));
-        txtId.setText(customer.getId());
-        txtAddress.setText(customer.getAddress());
+            txtName.setText(customer.getName());
+            txtSalary.setText(String.valueOf(customer.getSalary()));
+            txtId.setText(customer.getId());
+            txtAddress.setText(customer.getAddress());
+        }catch (Exception e){
+            System.out.println("come !");
+        }
 
         txtAddress.setDisable(false);
         txtId.setDisable(false);
