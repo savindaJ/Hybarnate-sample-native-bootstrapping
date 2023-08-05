@@ -6,8 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
+import lk.ijse.hybernate.sample.entity.Item;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
-public class AppInitializer extends Application {
+public class AppInitializer extends Application{
     public static void main(String[] args) {
        /* Customer customer = new Customer();
         customer.setAddress("matara");
@@ -37,17 +41,21 @@ public class AppInitializer extends Application {
         transaction.commit();
         session.close();*/
 
-        /*Session session = SessionFactoryConfigToProperty.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();*/
+       /* Session session = SessionFactoryConfigToProperty.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
 
-       /* Item item = new Item();
-        item.setItemCode("I002");
+        Item item = new Item();
+        item.setItemCode("I005");
         item.setName("Cake");
         item.setPrice(100.36);
         item.setQty(10);
 
-        session.save(item);*/
+        session.save(item);
 
+        transaction.commit();
+
+        session.close();
+*/
         /*Item item = session.get(Item.class, "I001");
         item.setQty(30);
         item.setPrice(8000.0);
@@ -60,7 +68,7 @@ public class AppInitializer extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/home.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/customer.fxml")));
         primaryStage.setScene(scene);
         primaryStage.setTitle("Hibernate");
         primaryStage.centerOnScreen();

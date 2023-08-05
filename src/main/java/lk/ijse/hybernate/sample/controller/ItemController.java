@@ -129,6 +129,7 @@ public class ItemController {
             else
                 new CustomAlert(Alert.AlertType.ERROR,"Error !","Not Saved !","Customer not Saved Try again !").show();
         }
+        fillTable();
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
@@ -147,13 +148,12 @@ public class ItemController {
 
             transaction.commit();
 
-            if (!(save ==null))
+            if (!(save == null))
                 new CustomAlert(Alert.AlertType.INFORMATION,"Update","Updated !","Item Updated !").show();
             else
                 new CustomAlert(Alert.AlertType.ERROR,"Update","Not Updated !","Item Not Completed Updated !").show();
         }
-
-
+            fillTable();
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
@@ -172,11 +172,17 @@ public class ItemController {
         }catch (Exception e){
             new CustomAlert(Alert.AlertType.ERROR,"Delete ","Not Deleted !",e.getMessage()).show();
         }
+        fillTable();
     }
 
     public void cmbIdOnAction(ActionEvent actionEvent) {
         btnDelete.setDisable(false);
         btnUpdate.setDisable(false);
+        txtItemPrice.setDisable(false);
+        txtName.setDisable(false);
+        txtQty.setDisable(false);
+        txtCode.setDisable(false);
+
         try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
@@ -245,6 +251,7 @@ public class ItemController {
         txtName.setDisable(false);
         txtQty.setDisable(false);
         txtCode.setDisable(false);
+        txtName.requestFocus();
 
     }
 }
