@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +21,15 @@ public class Customer {
     @Column(name = "CustomerSalary")
     Double salary;
     @Id //identify primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerID")  // identify column
-    String id;
+    int id;
+
+                      /*generative type*/
+    /*@GeneratedValue(strategy = GenerationType.IDENTITY)*/
+    /*@GeneratedValue(strategy = GenerationType.AUTO)*/
+    /*@GeneratedValue(strategy = GenerationType.SEQUENCE)*/
+    /*@GeneratedValue(strategy = GenerationType.TABLE)*/
+
 
 }

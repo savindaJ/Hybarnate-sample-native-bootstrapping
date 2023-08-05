@@ -98,7 +98,7 @@ public class CustomerController {
         List<Customer> resultList = getAll();
 
             for (Customer customer : resultList){
-                obList.add(customer.getId());
+                obList.add(String.valueOf(customer.getId()));
             }
             cmbId.setItems(obList);
         }
@@ -141,7 +141,7 @@ public class CustomerController {
                 txtName.getText(),
                 txtAddress.getText(),
                 Double.parseDouble(txtSalary.getText()),
-                txtId.getText());
+                Integer.parseInt(txtId.getText()));
 
         boolean save = repository.saveCustomer(customer);
 
@@ -172,9 +172,9 @@ public class CustomerController {
             else
                 new CustomAlert(Alert.AlertType.ERROR,"Update","Not Updated !","Customer Not Completed Updated !").show();
         }*/
-        Customer customer = repository.getCustomer(cmbId.getValue());
+        Customer customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
         customer.setName(txtName.getText());
-        customer.setId(txtId.getText());
+        customer.setId(Integer.parseInt(txtId.getText()));
         customer.setAddress(txtAddress.getText());
         customer.setSalary(Double.valueOf(txtSalary.getText()));
 
@@ -203,7 +203,7 @@ public class CustomerController {
             new CustomAlert(Alert.AlertType.ERROR,"Delete ","Deleted !",e.getMessage()).show();
         }*/
 
-        Customer customer = repository.getCustomer(cmbId.getValue());
+        Customer customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
         boolean delete = repository.deleteCustomer(customer);
 
         if (delete)
@@ -232,11 +232,11 @@ public class CustomerController {
         }*/
 
         try {
-            Customer customer = repository.getCustomer(cmbId.getValue());
+            Customer customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
 
             txtName.setText(customer.getName());
             txtSalary.setText(String.valueOf(customer.getSalary()));
-            txtId.setText(customer.getId());
+            txtId.setText(String.valueOf(customer.getId()));
             txtAddress.setText(customer.getAddress());
         }catch (Exception e){
 

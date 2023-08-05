@@ -9,5 +9,5 @@ public class CustomerTM {
     String name;
     String address;
     Double salary;
-    String id;
+    int id;
 }
