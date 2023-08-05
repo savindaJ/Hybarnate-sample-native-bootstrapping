@@ -12,7 +12,7 @@ public class CustomerRepository {
     {
        session = StandardConfig.getInstance().getSession();
     }
-    Session session;
+    private final Session session;
     public Customer getCustomer(String id){
        return session.get(Customer.class,id);
     }
