@@ -28,6 +28,7 @@ public class SessionFactoryConfigToProperty {
     }
 
     private SessionFactoryConfigToProperty(){
+        // toDo : pass to static !
     }
 
     public static SessionFactoryConfigToProperty getInstance(){
