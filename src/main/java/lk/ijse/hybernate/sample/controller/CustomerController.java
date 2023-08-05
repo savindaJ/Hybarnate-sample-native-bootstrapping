@@ -156,7 +156,7 @@ public class CustomerController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        try (Session session = StandardConfig.getInstance().getSession()) {
+       /* try (Session session = StandardConfig.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
             Customer customer = session.get(Customer.class, cmbId.getValue());
@@ -171,7 +171,20 @@ public class CustomerController {
                 new CustomAlert(Alert.AlertType.INFORMATION,"Update","Updated !","Customer Updated !").show();
             else
                 new CustomAlert(Alert.AlertType.ERROR,"Update","Not Updated !","Customer Not Completed Updated !").show();
-        }
+        }*/
+        Customer customer = repository.getCustomer(cmbId.getValue());
+        customer.setName(txtName.getText());
+        customer.setId(txtId.getText());
+        customer.setAddress(txtAddress.getText());
+        customer.setSalary(Double.valueOf(txtSalary.getText()));
+
+        boolean save = repository.updateCustomer(customer);
+
+        if (save)
+            new CustomAlert(Alert.AlertType.INFORMATION,"Update","Updated !","Customer Updated !").show();
+        else
+            new CustomAlert(Alert.AlertType.ERROR,"Update","Not Updated !","Customer Not Completed Updated !").show();
+
         initUi();
         setTbData();
         cmbId.setValue("");

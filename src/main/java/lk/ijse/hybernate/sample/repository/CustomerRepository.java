@@ -29,4 +29,16 @@ public class CustomerRepository {
 
         return save != null;
     }
+
+    public boolean updateCustomer(Customer customer){
+        Transaction transaction = session.beginTransaction();
+
+        session.update(customer);
+
+        transaction.commit();
+
+        session.close();
+
+        return true;
+    }
 }
