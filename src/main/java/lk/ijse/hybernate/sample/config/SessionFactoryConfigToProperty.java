@@ -13,7 +13,7 @@ public class SessionFactoryConfigToProperty {
     private static SessionFactory factory;
     private static SessionFactoryConfigToProperty configToProperty;
 
-    private SessionFactoryConfigToProperty(){
+    static {
         Configuration configuration = new Configuration();
         Properties properties = new Properties();
 
@@ -25,6 +25,9 @@ public class SessionFactoryConfigToProperty {
 
         configuration.addAnnotatedClass(Customer.class).addAnnotatedClass(Item.class);
         factory=configuration.setProperties(properties).buildSessionFactory();
+    }
+
+    private SessionFactoryConfigToProperty(){
     }
 
     public static SessionFactoryConfigToProperty getInstance(){
