@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class SessionFactoryConfigToProperty {
-    private static SessionFactory factory;
+    private static final SessionFactory factory;
     private static SessionFactoryConfigToProperty configToProperty;
 
     static {
