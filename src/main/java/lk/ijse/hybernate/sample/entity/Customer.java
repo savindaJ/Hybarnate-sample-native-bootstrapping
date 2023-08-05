@@ -30,7 +30,7 @@ public class Customer {
         *  new NameIdentifier
         *  set setters and set object in object !
     */
-    private NameIdentifier nameIdentifier;
+   /* private NameIdentifier nameIdentifier;*/
 
    /* @ElementCollection
             @CollectionTable(
