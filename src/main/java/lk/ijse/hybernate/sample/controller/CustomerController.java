@@ -24,6 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
+import lk.ijse.hybernate.sample.config.StandardConfig;
 import lk.ijse.hybernate.sample.entity.Customer;
 import lk.ijse.hybernate.sample.util.CustomAlert;
 import lk.ijse.hybernate.sample.util.tm.CustomerTM;
@@ -98,7 +99,7 @@ public class CustomerController {
 
     private List<Customer> getAll() {
 
-        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+        try (Session session = StandardConfig.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
 
@@ -118,7 +119,7 @@ public class CustomerController {
 }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
-        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+        try (Session session = StandardConfig.getInstance().getSession()) {
             Transaction transaction = session.beginTransaction();
             Customer customer = null;
             Serializable save=null;
@@ -142,7 +143,7 @@ public class CustomerController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+        try (Session session = StandardConfig.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
             Customer customer = session.get(Customer.class, cmbId.getValue());
@@ -163,7 +164,7 @@ public class CustomerController {
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
-        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+        try (Session session = StandardConfig.getInstance().getSession()) {
             Transaction transaction = session.beginTransaction();
             Customer customer = session.get(Customer.class, cmbId.getValue());
             session.delete(customer);
@@ -183,7 +184,7 @@ public class CustomerController {
         btnUpdate.setDisable(false);
         btnSave.setDisable(true);
 
-        try (Session session = SessionFactoryConfigToProperty.getInstance().getSession()) {
+        try (Session session = StandardConfig.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
             Customer customer = session.get(Customer.class, cmbId.getValue());
