@@ -191,7 +191,7 @@ public class CustomerController {
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
-        try (Session session = StandardConfig.getInstance().getSession()) {
+       /* try (Session session = StandardConfig.getInstance().getSession()) {
             Transaction transaction = session.beginTransaction();
             Customer customer = session.get(Customer.class, cmbId.getValue());
             session.delete(customer);
@@ -201,7 +201,17 @@ public class CustomerController {
             cmbId.setValue("");
         }catch (Exception e){
             new CustomAlert(Alert.AlertType.ERROR,"Delete ","Deleted !",e.getMessage()).show();
-        }
+        }*/
+
+        Customer customer = repository.getCustomer(cmbId.getValue());
+        boolean delete = repository.deleteCustomer(customer);
+
+        if (delete)
+            new CustomAlert(Alert.AlertType.CONFIRMATION,"Delete ","Deleted !","Customer Completed Deleted !").show();
+        else
+            new CustomAlert(Alert.AlertType.ERROR,"Delete ","Deleted !","not delete !").show();
+
+
         initUi();
         setTbData();
     }

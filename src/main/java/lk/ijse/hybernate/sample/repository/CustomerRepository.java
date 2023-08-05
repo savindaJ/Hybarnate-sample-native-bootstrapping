@@ -41,4 +41,16 @@ public class CustomerRepository {
 
         return true;
     }
+
+    public boolean deleteCustomer(Customer customer){
+        Transaction transaction = session.beginTransaction();
+
+        session.delete(customer);
+
+        transaction.commit();
+
+        session.close();
+
+        return true;
+    }
 }
