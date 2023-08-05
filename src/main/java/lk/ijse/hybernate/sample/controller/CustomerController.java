@@ -229,7 +229,7 @@ public class CustomerController {
             txtId.setText(customer.getId());
             txtAddress.setText(customer.getAddress());
         }catch (Exception e){
-            System.out.println("come !");
+
         }
 
         txtAddress.setDisable(false);
