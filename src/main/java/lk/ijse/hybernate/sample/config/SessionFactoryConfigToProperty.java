@@ -36,16 +36,6 @@ public class SessionFactoryConfigToProperty {
     }
 
     public Session getSession(){
-       /* Properties properties = null;
-        if (properties == null) {
-            properties = new Properties();
-            try {
-                properties.load(Customer.class
-                        .getResourceAsStream("hibernate.Properties"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }*/
         return factory.openSession();
     }
 }
