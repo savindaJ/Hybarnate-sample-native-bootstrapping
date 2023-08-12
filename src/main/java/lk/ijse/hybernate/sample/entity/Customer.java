@@ -14,6 +14,11 @@ import javax.persistence.*;
 @Table(schema = "customer")
 public class Customer {
 
+    /**
+     * add new customer class
+     * and relationship adding !
+     * */
+
     @Column(name = "CustomerName")
     String name;
     @Column(name = "CustomerAddress")
@@ -24,5 +29,8 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerID")
     int id;
+
+//    toDo : create relationship !
+
 
 }
