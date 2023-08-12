@@ -25,6 +25,17 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerID")  // identify column
     int id;
+
+   /* @Column(name = "customer_age" ,columnDefinition = "TinyInt")
+    private int age;*/
+
+    /*private NameIdentifier nameIdentifier;*/
+
+    /*embeddable class usage !*/
+    /*
+    private NameIdentifier nameIdentifier;
+    cretae column in this customer table !
+    */
     /*
         *  embedded usage
         *  new NameIdentifier
@@ -44,7 +55,7 @@ public class Customer {
     void sample(){
         MobileNo mobileNo = new MobileNo();
         mobileNo.setMobileLine("022144555555");
-        customer.setMobileNos(mobileNo);
+        customer.setMobi    leNos(mobileNo);
     }*/
 
                       /*generative type*/
