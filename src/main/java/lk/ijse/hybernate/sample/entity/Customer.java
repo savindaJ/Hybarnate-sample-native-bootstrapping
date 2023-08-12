@@ -26,6 +26,8 @@ public class Customer {
     @Column(name = "customerID")  // identify column
     int id;
 
+
+
    /* @Column(name = "customer_age" ,columnDefinition = "TinyInt")
     private int age;*/
 
