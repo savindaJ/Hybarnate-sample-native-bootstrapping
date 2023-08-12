@@ -23,6 +23,4 @@ public class Order {
     @Column(name = "order_date")
     private Date orderDate;
 
-
-
 }
