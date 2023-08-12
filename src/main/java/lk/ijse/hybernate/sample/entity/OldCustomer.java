@@ -1,3 +1,4 @@
+/*
 package lk.ijse.hybernate.sample.entity;
 
 import lk.ijse.hybernate.sample.embeded.NameIdentifier;
@@ -10,9 +11,13 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-/*identify entity*/
+*/
+/*identify entity*//*
+
 @Entity
-/*naming table*/
+*/
+/*naming table*//*
+
 @Table(schema = "customer")
 public class OldCustomer {
     @Column(name = "CustomerName")
@@ -26,46 +31,73 @@ public class OldCustomer {
     @Column(name = "customerID")  // identify column
     int id;
 
-   /* @Column(name = "customer_age" ,columnDefinition = "TinyInt")
-    private int age;*/
+   */
+/* @Column(name = "customer_age" ,columnDefinition = "TinyInt")
+    private int age;*//*
 
-    /*private NameIdentifier nameIdentifier;*/
 
-    /*embeddable class usage !*/
-    /*
+    */
+/*private NameIdentifier nameIdentifier;*//*
+
+
+    */
+/*embeddable class usage !*//*
+
+    */
+/*
     private NameIdentifier nameIdentifier;
     cretae column in this customer table !
+    *//*
+
     */
-    /*
+/*
      *  embedded usage
      *  new NameIdentifier
      *  set setters and set object in object !
-     */
-    /* private NameIdentifier nameIdentifier;*/
+     *//*
 
-   /* @ElementCollection
+    */
+/* private NameIdentifier nameIdentifier;*//*
+
+
+   */
+/* @ElementCollection
             @CollectionTable(
                     name = "numbers",
                     joinColumns = @JoinColumn(name = "customerID")
             )
-    List<MobileNo> mobileNos = new ArrayList<>();*/
+    List<MobileNo> mobileNos = new ArrayList<>();*//*
 
-   /* Customer customer = new Customer();
+
+   */
+/* Customer customer = new Customer();
 
     void sample(){
         MobileNo mobileNo = new MobileNo();
         mobileNo.setMobileLine("022144555555");
         customer.setMobi    leNos(mobileNo);
-    }*/
+    }*//*
 
-    /*generative type*/
-    /*@GeneratedValue(strategy = GenerationType.IDENTITY)*/
-    /*@GeneratedValue(strategy = GenerationType.AUTO)*/
-    /*@GeneratedValue(strategy = GenerationType.SEQUENCE)*/
-    /*@GeneratedValue(strategy = GenerationType.TABLE)*/
+
+    */
+/*generative type*//*
+
+    */
+/*@GeneratedValue(strategy = GenerationType.IDENTITY)*//*
+
+    */
+/*@GeneratedValue(strategy = GenerationType.AUTO)*//*
+
+    */
+/*@GeneratedValue(strategy = GenerationType.SEQUENCE)*//*
+
+    */
+/*@GeneratedValue(strategy = GenerationType.TABLE)*//*
+
 
 
 }
 
 
 
+*/

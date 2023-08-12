@@ -2,12 +2,11 @@ package lk.ijse.hybernate.sample.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @AllArgsConstructor
 @Data
@@ -18,9 +17,14 @@ public class Order {
 
     @Id
     @Column(name = "order_id" ,length = 30)
-    private String orderID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer orderID;
 
+    @Column(name = "description")
+    private String description;
+
+    @CreationTimestamp
     @Column(name = "order_date")
-    private Date orderDate;
+    private Timestamp orderDate;
 
 }

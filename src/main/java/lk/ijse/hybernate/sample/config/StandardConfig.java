@@ -2,6 +2,7 @@ package lk.ijse.hybernate.sample.config;
 
 import lk.ijse.hybernate.sample.entity.Customer;
 import lk.ijse.hybernate.sample.entity.Item;
+import lk.ijse.hybernate.sample.entity.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -14,6 +15,7 @@ public class StandardConfig {
          factory = new Configuration()
                 .configure()
                 .addAnnotatedClass(Customer.class)
+                .addAnnotatedClass(Order.class)
                 .addAnnotatedClass(Item.class)
                 .buildSessionFactory();
     }
