@@ -7,11 +7,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
+import lk.ijse.hybernate.sample.config.StandardConfig;
 import lk.ijse.hybernate.sample.entity.Item;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class AppInitializer extends Application{
+public class AppInitializer{
     public static void main(String[] args) {
        /* Customer customer = new Customer();
         customer.setAddress("matara");
@@ -64,9 +65,15 @@ public class AppInitializer extends Application{
         session.delete(s002);
         transaction.commit();
         session.close();*/
-        launch(args);
+
+        Session session = StandardConfig.getInstance().getSession();
+
+
+
+
+
     }
-    @Override
+/*    @Override
     public void start(Stage primaryStage) throws Exception {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/customer.fxml")));
         primaryStage.setScene(scene);
@@ -78,5 +85,5 @@ public class AppInitializer extends Application{
         tt.setFromX(-scene.getWidth());
         tt.setToX(0);
         tt.play();
-    }
+    }*/
 }

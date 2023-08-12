@@ -34,8 +34,13 @@ public class Customer {
 
 //    toDo : create relationship !
 
-    @OneToMany
-    @JoinColumn(name = "customer_id")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customer")
     private List<Order> orders = new ArrayList<>();
 
+    public Customer(String name, String address, Double salary, int id) {
+        this.name = name;
+        this.address = address;
+        this.salary = salary;
+        this.id = id;
+    }
 }

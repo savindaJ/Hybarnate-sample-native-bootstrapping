@@ -6,6 +6,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @Data
@@ -25,5 +27,19 @@ public class Order {
     @CreationTimestamp
     @Column(name = "order_date")
     private Timestamp orderDate;
+
+//    toDo : relate customer and order !
+
+    @ManyToOne
+            @JoinColumn(name = "customerID") // joining column name in customer !
+    Customer customer;
+
+    /*@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Item> items = new ArrayList<>();*/
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<OrderDetail> orderDetails = new ArrayList<>();
+
+
 
 }
