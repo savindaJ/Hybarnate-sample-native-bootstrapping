@@ -16,13 +16,24 @@ public class OrderDetail {
     @Column(name = "order_price")
     private double price;
 
-    @OneToMany
-    private Item item;
+    @ManyToOne
+    @JoinColumn(name = "order_id",// enn ona mona primary key ekada kyla kynna ona
+                referencedColumnName = "order_id",
+                insertable = false,
+            updatable = false
+    )
+    private Item item; //mapped by item in item
 
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(name = "code",
+                referencedColumnName = "code",
+                insertable = false,
+            updatable = false
+    )
     private Order order;
 
     @EmbeddedId
     private OrderDetailPK orderDetailPK;
+
 
 }

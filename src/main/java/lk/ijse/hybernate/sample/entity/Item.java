@@ -25,11 +25,16 @@ public class Item {
     @Column(name = "ItemQty")
     private Integer qty;
 
-
-    /*@ManyToMany(mappedBy = "items")
+    public Item(String itemCode, String name, Double price, Integer qty) {
+        this.itemCode = itemCode;
+        this.name = name;
+        this.price = price;
+        this.qty = qty;
+    }
+/*@ManyToMany(mappedBy = "items")
     private List<Order> orders =  new ArrayList<>();*/
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "item")
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
 
