@@ -1,7 +1,7 @@
 package lk.ijse.hybernate.sample.config;
 
 import lk.ijse.hybernate.sample.copyEntity.CustomerCopy;
-import lk.ijse.hybernate.sample.copyEntity.ItemCopy;
+import lk.ijse.hybernate.sample.copyEntity.Item;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -28,7 +28,7 @@ public class SessionFactoryConfig {
         StandardServiceRegistry builder = new StandardServiceRegistryBuilder()
                 .configure("hibernate.cfg.xml").build();
 
-        Metadata meta = new MetadataSources(builder).addAnnotatedClass(CustomerCopy.class).addAnnotatedClass(ItemCopy.class).
+        Metadata meta = new MetadataSources(builder).addAnnotatedClass(CustomerCopy.class).addAnnotatedClass(Item.class).
                 getMetadataBuilder().
                 applyImplicitNamingStrategy(ImplicitNamingStrategyComponentPathImpl.INSTANCE).
                 build();
@@ -43,7 +43,7 @@ public class SessionFactoryConfig {
                         .configure("hibernate.cfg.xml")
                         .build())
                 .addAnnotatedClass(CustomerCopy.class)
-                .addAnnotatedClass(ItemCopy.class).
+                .addAnnotatedClass(Item.class).
                 getMetadataBuilder().
                 applyImplicitNamingStrategy(ImplicitNamingStrategyComponentPathImpl.INSTANCE).
                 build()

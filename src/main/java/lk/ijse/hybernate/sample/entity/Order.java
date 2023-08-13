@@ -1,11 +1,15 @@
 package lk.ijse.hybernate.sample.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+@Data
+@AllArgsConstructor
 
 @Entity
 @Table(name = "orders")
@@ -31,35 +35,9 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
-    public Order() {}
-
     public Order(int id, String description, Timestamp orderDateTime) {
         this.id = id;
         this.description = description;
-        this.orderDateTime = orderDateTime;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Timestamp getOrderDateTime() {
-        return orderDateTime;
-    }
-
-    public void setOrderDateTime(Timestamp orderDateTime) {
         this.orderDateTime = orderDateTime;
     }
 }

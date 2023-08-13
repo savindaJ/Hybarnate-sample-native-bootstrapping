@@ -23,7 +23,7 @@ public class OrderDetailCopy {
             referencedColumnName = "item_id",
             insertable = false,
             updatable = false)
-    private ItemCopy itemCopy;
+    private Item item;
 
     public OrderDetailCopy() {}
 

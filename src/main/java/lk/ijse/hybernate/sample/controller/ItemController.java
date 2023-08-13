@@ -24,7 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.StandardConfig;
-import lk.ijse.hybernate.sample.copyEntity.ItemCopy;
+import lk.ijse.hybernate.sample.entity.Item;
 import lk.ijse.hybernate.sample.util.CustomAlert;
 import lk.ijse.hybernate.sample.util.tm.ItemTM;
 import org.hibernate.Session;
@@ -78,18 +78,18 @@ public class ItemController {
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
 
-    private List<ItemCopy> getAllItem(){
+    private List<Item> getAllItem(){
         try (Session session = StandardConfig.getInstance().getSession()) {
 
             Transaction transaction = session.beginTransaction();
 
             CriteriaBuilder builder = session.getCriteriaBuilder();
 
-            CriteriaQuery<ItemCopy> query = builder.createQuery(ItemCopy.class);
+            CriteriaQuery<Item> query = builder.createQuery(Item.class);
 
-            query.from(ItemCopy.class);
+            query.from(Item.class);
 
-            List<ItemCopy> resultList = session.createQuery(query).getResultList();
+            List<Item> resultList = session.createQuery(query).getResultList();
 
             transaction.commit();
 
@@ -99,16 +99,16 @@ public class ItemController {
 
     private void fillTable() {
         ObservableList<ItemTM> itemTMS = FXCollections.observableArrayList();
-        for (ItemCopy itemCopy : getAllItem()) {
-            itemTMS.add(new ItemTM(itemCopy.getItemCode(), itemCopy.getName(), itemCopy.getPrice(), itemCopy.getQty()));
+        for (Item item : getAllItem()) {
+            itemTMS.add(new ItemTM(item.getId(), item.getItemName(), item.getUnitPrice(), item.getQty()));
         }
         tblItem.setItems(itemTMS);
     }
 
     private void setItemID() {
         ObservableList <String> idList = FXCollections.observableArrayList();
-        for (ItemCopy itemCopy : getAllItem()) {
-            idList.add(itemCopy.getItemCode());
+        for (Item item : getAllItem()) {
+            idList.add(String.valueOf(item.getId()));
         }
         cmbId.setItems(idList);
     }
@@ -118,7 +118,7 @@ public class ItemController {
 
             Transaction transaction = session.beginTransaction();
 
-            ItemCopy itemCopy = new ItemCopy(txtCode.getText(),txtName.getText(),Double.parseDouble(txtItemPrice.getText()),Integer.parseInt(txtQty.getText()));
+            lk.ijse.hybernate.sample.entity.Item itemCopy = new lk.ijse.hybernate.sample.entity.Item(Integer.parseInt(txtCode.getText()),txtName.getText(),Integer.parseInt(txtQty.getText()),Double.parseDouble(txtItemPrice.getText()));
 
             Serializable save = session.save(itemCopy);
             transaction.commit();
@@ -136,14 +136,14 @@ public class ItemController {
 
             Transaction transaction = session.beginTransaction();
 
-            ItemCopy itemCopy = session.get(ItemCopy.class, cmbId.getValue());
+            Item item = session.get(Item.class, Integer.parseInt(cmbId.getValue()));
 
-            itemCopy.setPrice(Double.valueOf(txtItemPrice.getText()));
-            itemCopy.setQty(Integer.valueOf(txtQty.getText()));
-            itemCopy.setItemCode(txtCode.getText());
-            itemCopy.setName(txtName.getText());
+            item.setUnitPrice(Double.valueOf(txtItemPrice.getText()));
+            item.setQty(Integer.valueOf(txtQty.getText()));
+            item.setId(Integer.parseInt(txtCode.getText()));
+            item.setItemName(txtName.getText());
 
-            Serializable save = session.save(itemCopy);
+            Serializable save = session.save(item);
 
             transaction.commit();
 
@@ -160,9 +160,9 @@ public class ItemController {
 
             Transaction transaction = session.beginTransaction();
 
-            ItemCopy itemCopy = session.get(ItemCopy.class, cmbId.getValue());
+            Item item = session.get(Item.class, Integer.parseInt(cmbId.getValue()));
 
-            session.delete(itemCopy);
+            session.delete(item);
 
             transaction.commit();
 
@@ -186,14 +186,14 @@ public class ItemController {
 
             Transaction transaction = session.beginTransaction();
 
-            ItemCopy itemCopy = session.get(ItemCopy.class, cmbId.getValue());
+            Item item = session.get(Item.class, Integer.parseInt(cmbId.getValue()));
 
             transaction.commit();
 
-            txtCode.setText(itemCopy.getItemCode());
-            txtName.setText(itemCopy.getName());
-            txtQty.setText(String.valueOf(itemCopy.getQty()));
-            txtItemPrice.setText(String.valueOf(itemCopy.getPrice()));
+            txtCode.setText(String.valueOf(item.getId()));
+            txtName.setText(item.getItemName());
+            txtQty.setText(String.valueOf(item.getQty()));
+            txtItemPrice.setText(String.valueOf(item.getUnitPrice()));
         }
     }
 

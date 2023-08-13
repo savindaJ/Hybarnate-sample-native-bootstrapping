@@ -1,9 +1,12 @@
 package lk.ijse.hybernate.sample.entity;
 
 import lk.ijse.hybernate.sample.embeded.OrderDetailPK;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import javax.persistence.*;
-
+@Data
+@AllArgsConstructor
 @Entity
 @Table(name = "order_details")
 public class OrderDetail {
@@ -27,35 +30,9 @@ public class OrderDetail {
                 updatable = false)
     private Item item;
 
-    public OrderDetail() {}
-
     public OrderDetail(OrderDetailPK orderDetailPK, int qty, double price) {
         this.orderDetailPK = orderDetailPK;
         this.qty = qty;
-        this.price = price;
-    }
-
-    public OrderDetailPK getOrderDetailPK() {
-        return orderDetailPK;
-    }
-
-    public void setOrderDetailPK(OrderDetailPK orderDetailPK) {
-        this.orderDetailPK = orderDetailPK;
-    }
-
-    public int getQty() {
-        return qty;
-    }
-
-    public void setQty(int qty) {
-        this.qty = qty;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
         this.price = price;
     }
 }

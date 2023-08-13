@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(schema = "item")
-public class ItemCopy {
+public class Item {
 
     @Id
     @Column(name = "code")
@@ -28,7 +28,7 @@ public class ItemCopy {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "item")
     private List<OrderDetailCopy> orderDetailCopies = new ArrayList<>();
 
-    public ItemCopy(String itemCode, String name, Double price, Integer qty) {
+    public Item(String itemCode, String name, Double price, Integer qty) {
         this.itemCode = itemCode;
         this.name = name;
         this.price = price;
