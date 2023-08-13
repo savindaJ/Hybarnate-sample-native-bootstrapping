@@ -23,9 +23,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
 import lk.ijse.hybernate.sample.config.StandardConfig;
-import lk.ijse.hybernate.sample.entity.Customer;
+import lk.ijse.hybernate.sample.copyEntity.CustomerCopy;
 import lk.ijse.hybernate.sample.repository.CustomerRepository;
 import lk.ijse.hybernate.sample.util.CustomAlert;
 import lk.ijse.hybernate.sample.util.tm.CustomerTM;
@@ -35,7 +34,6 @@ import org.hibernate.Transaction;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -80,9 +78,9 @@ public class CustomerController {
     private void setTbData() {
         ObservableList<CustomerTM> tm = FXCollections.observableArrayList();
 
-        List<Customer> all = getAll();
+        List<CustomerCopy> all = getAll();
 
-        for (Customer customer : all){
+        for (CustomerCopy customer : all){
             tm.add(new CustomerTM(
                     customer.getName(),
                     customer.getAddress() ,
@@ -95,15 +93,15 @@ public class CustomerController {
     private void setCustomerID() {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
-        List<Customer> resultList = getAll();
+        List<CustomerCopy> resultList = getAll();
 
-            for (Customer customer : resultList){
+            for (CustomerCopy customer : resultList){
                 obList.add(String.valueOf(customer.getId()));
             }
             cmbId.setItems(obList);
         }
 
-    private List<Customer> getAll() {
+    private List<CustomerCopy> getAll() {
 
         try (Session session = StandardConfig.getInstance().getSession()) {
 
@@ -111,11 +109,11 @@ public class CustomerController {
 
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 
-            CriteriaQuery<Customer> query = criteriaBuilder.createQuery(Customer.class);
+            CriteriaQuery<CustomerCopy> query = criteriaBuilder.createQuery(CustomerCopy.class);
 
-            query.from(Customer.class);
+            query.from(CustomerCopy.class);
 
-            List<Customer> resultList = session.createQuery(query).getResultList();
+            List<CustomerCopy> resultList = session.createQuery(query).getResultList();
 
             transaction.commit();
 
@@ -137,7 +135,7 @@ public class CustomerController {
 //                new CustomAlert(Alert.AlertType.ERROR,"Error !","Empty !","Data is Empty Try again !").show();
             }*/
 
-        Customer customer = new Customer(
+        CustomerCopy customer = new CustomerCopy(
                 txtName.getText(),
                 txtAddress.getText(),
                 Double.parseDouble(txtSalary.getText()),
@@ -172,7 +170,7 @@ public class CustomerController {
             else
                 new CustomAlert(Alert.AlertType.ERROR,"Update","Not Updated !","Customer Not Completed Updated !").show();
         }*/
-        Customer customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
+        CustomerCopy customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
         customer.setName(txtName.getText());
         customer.setId(Integer.parseInt(txtId.getText()));
         customer.setAddress(txtAddress.getText());
@@ -203,7 +201,7 @@ public class CustomerController {
             new CustomAlert(Alert.AlertType.ERROR,"Delete ","Deleted !",e.getMessage()).show();
         }*/
 
-        Customer customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
+        CustomerCopy customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
         boolean delete = repository.deleteCustomer(customer);
 
         if (delete)
@@ -232,7 +230,7 @@ public class CustomerController {
         }*/
 
         try {
-            Customer customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
+            CustomerCopy customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
 
             txtName.setText(customer.getName());
             txtSalary.setText(String.valueOf(customer.getSalary()));

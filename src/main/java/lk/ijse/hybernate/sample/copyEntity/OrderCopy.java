@@ -1,4 +1,4 @@
-package lk.ijse.hybernate.sample.entity;
+package lk.ijse.hybernate.sample.copyEntity;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "`order`")
+public class OrderCopy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,17 +23,17 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private CustomerCopy customer;
 
 //    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<Item> items = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+    private List<OrderDetailCopy> orderDetailCopies = new ArrayList<>();
 
-    public Order() {}
+    public OrderCopy() {}
 
-    public Order(int id, String description, Timestamp orderDateTime) {
+    public OrderCopy(int id, String description, Timestamp orderDateTime) {
         this.id = id;
         this.description = description;
         this.orderDateTime = orderDateTime;

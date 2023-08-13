@@ -1,45 +1,43 @@
-package lk.ijse.hybernate.sample.entity;
-
-import lk.ijse.hybernate.sample.embeded.OrderDetailPK;
+package lk.ijse.hybernate.sample.copyEntity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "order_details")
-public class OrderDetail {
+public class OrderDetailCopy {
 
     @EmbeddedId
-    private OrderDetailPK orderDetailPK;
+    private OrderDetailPKCopy orderDetailPK;
     @Column(name = "order_quantity")
     private int qty;
     @Column(name = "order_price")
     private double price;
     @ManyToOne
     @JoinColumn(name = "order_id",
-                referencedColumnName = "order_id",
-                insertable = false,
-                updatable = false)
-    private Order order;
+            referencedColumnName = "order_id",
+            insertable = false,
+            updatable = false)
+    private OrderCopy orderCopy;
     @ManyToOne
     @JoinColumn(name = "item_id",
-                referencedColumnName = "item_id",
-                insertable = false,
-                updatable = false)
-    private Item item;
+            referencedColumnName = "item_id",
+            insertable = false,
+            updatable = false)
+    private ItemCopy itemCopy;
 
-    public OrderDetail() {}
+    public OrderDetailCopy() {}
 
-    public OrderDetail(OrderDetailPK orderDetailPK, int qty, double price) {
+    public OrderDetailCopy(OrderDetailPKCopy orderDetailPK, int qty, double price) {
         this.orderDetailPK = orderDetailPK;
         this.qty = qty;
         this.price = price;
     }
 
-    public OrderDetailPK getOrderDetailPK() {
+    public OrderDetailPKCopy getOrderDetailPK() {
         return orderDetailPK;
     }
 
-    public void setOrderDetailPK(OrderDetailPK orderDetailPK) {
+    public void setOrderDetailPK(OrderDetailPKCopy orderDetailPK) {
         this.orderDetailPK = orderDetailPK;
     }
 
@@ -59,3 +57,4 @@ public class OrderDetail {
         this.price = price;
     }
 }
+

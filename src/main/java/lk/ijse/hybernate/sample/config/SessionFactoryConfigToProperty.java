@@ -1,7 +1,7 @@
 package lk.ijse.hybernate.sample.config;
 
-import lk.ijse.hybernate.sample.entity.Customer;
-import lk.ijse.hybernate.sample.entity.Item;
+import lk.ijse.hybernate.sample.copyEntity.CustomerCopy;
+import lk.ijse.hybernate.sample.copyEntity.ItemCopy;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -23,7 +23,7 @@ public class SessionFactoryConfigToProperty {
             throw new RuntimeException(e);
         }
 
-        configuration.addAnnotatedClass(Customer.class).addAnnotatedClass(Item.class);
+        configuration.addAnnotatedClass(CustomerCopy.class).addAnnotatedClass(ItemCopy.class);
         factory=configuration.setProperties(properties).buildSessionFactory();
     }
 

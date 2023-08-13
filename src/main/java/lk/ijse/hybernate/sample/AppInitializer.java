@@ -1,16 +1,7 @@
 package lk.ijse.hybernate.sample;
 
-import javafx.animation.TranslateTransition;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.util.Duration;
-import lk.ijse.hybernate.sample.config.SessionFactoryConfigToProperty;
 import lk.ijse.hybernate.sample.config.StandardConfig;
-import lk.ijse.hybernate.sample.entity.Item;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 public class AppInitializer{
     public static void main(String[] args) {

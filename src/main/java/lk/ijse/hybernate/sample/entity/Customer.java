@@ -1,46 +1,76 @@
 package lk.ijse.hybernate.sample.entity;
 
-import lk.ijse.hybernate.sample.embeded.NameIdentifier;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(schema = "customer")
+@Table(name = "customer")
 public class Customer {
 
-    /**
-     * add new customer class
-     * and relationship adding !
-     * */
-
-    @Column(name = "CustomerName")
-    String name;
-    @Column(name = "CustomerAddress")
-    String address;
-    @Column(name = "CustomerSalary")
-    Double salary;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customerID")
-    int id;
+    @Column(name = "customer_id")
+    private int id;
+    @Column(name = "customer_name")
+    private String name;
+    @Column(name = "customer_address")
+    private String address;
+    @Column(name = "customer_age")
+    private int age;
+    @Column(name = "customer_salary")
+    private double salary;
 
-//    toDo : create relationship !
-
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customer")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")
     private List<Order> orders = new ArrayList<>();
 
-    public Customer(String name, String address, Double salary, int id) {
+    public Customer() {}
+
+    public Customer(int id, String name, String address, int age, double salary) {
+        this.id = id;
         this.name = name;
         this.address = address;
+        this.age = age;
         this.salary = salary;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 }

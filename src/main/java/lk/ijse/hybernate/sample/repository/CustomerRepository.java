@@ -1,7 +1,7 @@
 package lk.ijse.hybernate.sample.repository;
 
 import lk.ijse.hybernate.sample.config.StandardConfig;
-import lk.ijse.hybernate.sample.entity.Customer;
+import lk.ijse.hybernate.sample.copyEntity.CustomerCopy;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -13,11 +13,11 @@ public class CustomerRepository {
        session = StandardConfig.getInstance().getSession();
     }
     private final Session session;
-    public Customer getCustomer(Integer id){
-       return session.get(Customer.class,id);
+    public CustomerCopy getCustomer(Integer id){
+       return session.get(CustomerCopy.class,id);
     }
 
-    public boolean saveCustomer(Customer customer){
+    public boolean saveCustomer(CustomerCopy customer){
         Transaction transaction = session.beginTransaction();
         /*returning customer id in serializable type*/
         Serializable save = session.save(customer);
@@ -26,7 +26,7 @@ public class CustomerRepository {
         return save != null;
     }
 
-    public boolean updateCustomer(Customer customer){
+    public boolean updateCustomer(CustomerCopy customer){
         Transaction transaction = session.beginTransaction();
         session.update(customer);
         transaction.commit();
@@ -34,7 +34,7 @@ public class CustomerRepository {
         return true;
     }
 
-    public boolean deleteCustomer(Customer customer){
+    public boolean deleteCustomer(CustomerCopy customer){
         Transaction transaction = session.beginTransaction();
         /*add exception handling part !*/
         try {
