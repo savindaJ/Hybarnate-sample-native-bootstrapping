@@ -14,8 +14,8 @@ public class CustomerRepository {
        session = StandardConfig.getInstance().getSession();
     }
     private final Session session;
-    public CustomerCopy getCustomer(Integer id){
-       return session.get(CustomerCopy.class,id);
+    public Customer getCustomer(Integer id){
+       return session.get(Customer.class,id);
     }
 
     public boolean saveCustomer(Customer customer){
@@ -27,7 +27,7 @@ public class CustomerRepository {
         return save != null;
     }
 
-    public boolean updateCustomer(CustomerCopy customer){
+    public boolean updateCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
         session.update(customer);
         transaction.commit();
@@ -35,7 +35,7 @@ public class CustomerRepository {
         return true;
     }
 
-    public boolean deleteCustomer(CustomerCopy customer){
+    public boolean deleteCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
         /*add exception handling part !*/
         try {

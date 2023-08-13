@@ -167,7 +167,7 @@ public class CustomerController {
             else
                 new CustomAlert(Alert.AlertType.ERROR,"Update","Not Updated !","Customer Not Completed Updated !").show();
         }*/
-        CustomerCopy customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
+        Customer customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
         customer.setName(txtName.getText());
         customer.setId(Integer.parseInt(txtId.getText()));
         customer.setAddress(txtAddress.getText());
@@ -198,7 +198,7 @@ public class CustomerController {
             new CustomAlert(Alert.AlertType.ERROR,"Delete ","Deleted !",e.getMessage()).show();
         }*/
 
-        CustomerCopy customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
+        Customer customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
         boolean delete = repository.deleteCustomer(customer);
 
         if (delete)
@@ -227,7 +227,7 @@ public class CustomerController {
         }*/
 
         try {
-            CustomerCopy customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
+            Customer customer = repository.getCustomer(Integer.parseInt(cmbId.getValue()));
 
             txtName.setText(customer.getName());
             txtSalary.setText(String.valueOf(customer.getSalary()));
