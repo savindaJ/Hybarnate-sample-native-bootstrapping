@@ -25,6 +25,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.StandardConfig;
 import lk.ijse.hybernate.sample.copyEntity.CustomerCopy;
+import lk.ijse.hybernate.sample.entity.Customer;
 import lk.ijse.hybernate.sample.repository.CustomerRepository;
 import lk.ijse.hybernate.sample.util.CustomAlert;
 import lk.ijse.hybernate.sample.util.tm.CustomerTM;
@@ -78,9 +79,9 @@ public class CustomerController {
     private void setTbData() {
         ObservableList<CustomerTM> tm = FXCollections.observableArrayList();
 
-        List<CustomerCopy> all = getAll();
+        List<Customer> all = getAll();
 
-        for (CustomerCopy customer : all){
+        for (Customer customer : all){
             tm.add(new CustomerTM(
                     customer.getName(),
                     customer.getAddress() ,
@@ -93,15 +94,15 @@ public class CustomerController {
     private void setCustomerID() {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
-        List<CustomerCopy> resultList = getAll();
+        List<Customer> resultList = getAll();
 
-            for (CustomerCopy customer : resultList){
+            for (Customer customer : resultList){
                 obList.add(String.valueOf(customer.getId()));
             }
             cmbId.setItems(obList);
         }
 
-    private List<CustomerCopy> getAll() {
+    private List<Customer> getAll() {
 
         try (Session session = StandardConfig.getInstance().getSession()) {
 
@@ -109,11 +110,11 @@ public class CustomerController {
 
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 
-            CriteriaQuery<CustomerCopy> query = criteriaBuilder.createQuery(CustomerCopy.class);
+            CriteriaQuery<Customer> query = criteriaBuilder.createQuery(Customer.class);
 
-            query.from(CustomerCopy.class);
+            query.from(Customer.class);
 
-            List<CustomerCopy> resultList = session.createQuery(query).getResultList();
+            List<Customer> resultList = session.createQuery(query).getResultList();
 
             transaction.commit();
 
@@ -135,11 +136,7 @@ public class CustomerController {
 //                new CustomAlert(Alert.AlertType.ERROR,"Error !","Empty !","Data is Empty Try again !").show();
             }*/
 
-        CustomerCopy customer = new CustomerCopy(
-                txtName.getText(),
-                txtAddress.getText(),
-                Double.parseDouble(txtSalary.getText()),
-                Integer.parseInt(txtId.getText()));
+        Customer customer = new Customer(Integer.parseInt(txtId.getText()),txtName.getText(),txtAddress.getText(),Double.parseDouble(txtSalary.getText()));
 
         boolean save = repository.saveCustomer(customer);
 

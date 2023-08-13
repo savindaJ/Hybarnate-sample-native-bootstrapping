@@ -1,9 +1,15 @@
 package lk.ijse.hybernate.sample;
 
+import javafx.animation.TranslateTransition;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.StandardConfig;
 import org.hibernate.Session;
 
-public class AppInitializer{
+public class AppInitializer extends Application {
     public static void main(String[] args) {
        /* Customer customer = new Customer();
         customer.setAddress("matara");
@@ -57,12 +63,23 @@ public class AppInitializer{
         transaction.commit();
         session.close();*/
 
-        Session session = StandardConfig.getInstance().getSession();
+//        Session session = StandardConfig.getInstance().getSession();
 
+        launch(args);
+    }
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/customer.fxml")));
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Hibernate");
+        primaryStage.centerOnScreen();
+        primaryStage.show();
 
-
-
+        TranslateTransition tt = new TranslateTransition(Duration.millis(350), scene.getRoot());
+        tt.setFromX(-scene.getWidth());
+        tt.setToX(0);
+        tt.play();
     }
 /*    @Override
     public void start(Stage primaryStage) throws Exception {

@@ -8,29 +8,26 @@ import java.util.List;
 @Table(name = "customer")
 public class Customer {
 
+    @Column(name = "CustomerName")
+    String name;
+    @Column(name = "CustomerAddress")
+    String address;
+    @Column(name = "CustomerSalary")
+    Double salary;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    private int id;
-    @Column(name = "customer_name")
-    private String name;
-    @Column(name = "customer_address")
-    private String address;
-    @Column(name = "customer_age")
-    private int age;
-    @Column(name = "customer_salary")
-    private double salary;
+    @Column(name = "customerID")
+    int id;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")
     private List<Order> orders = new ArrayList<>();
 
     public Customer() {}
 
-    public Customer(int id, String name, String address, int age, double salary) {
+    public Customer(int id, String name, String address, double salary) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.age = age;
         this.salary = salary;
     }
 
@@ -56,14 +53,6 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public double getSalary() {

@@ -2,6 +2,7 @@ package lk.ijse.hybernate.sample.repository;
 
 import lk.ijse.hybernate.sample.config.StandardConfig;
 import lk.ijse.hybernate.sample.copyEntity.CustomerCopy;
+import lk.ijse.hybernate.sample.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -17,7 +18,7 @@ public class CustomerRepository {
        return session.get(CustomerCopy.class,id);
     }
 
-    public boolean saveCustomer(CustomerCopy customer){
+    public boolean saveCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
         /*returning customer id in serializable type*/
         Serializable save = session.save(customer);
