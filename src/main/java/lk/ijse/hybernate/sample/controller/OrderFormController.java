@@ -10,10 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
@@ -25,6 +22,7 @@ import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.StandardConfig;
 import lk.ijse.hybernate.sample.entity.Customer;
 import lk.ijse.hybernate.sample.entity.Item;
+import lk.ijse.hybernate.sample.util.CartTM;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -53,6 +51,8 @@ public class OrderFormController {
     public TableColumn colTotal;
     public TableColumn colAction;
     public Label lblNetTotal;
+
+    private ObservableList<CartTM> obList = FXCollections.observableArrayList();
 
     @FXML
     void initialize(){
@@ -178,6 +178,53 @@ public class OrderFormController {
     }
 
     public void btnAddToCartOnAction(ActionEvent actionEvent) {
+        String code = cmbItemCode.getValue();
+        String description = lblDescription.getText();
+        int qty = Integer.parseInt(txtQty.getText());
+        double unitPrice = Double.parseDouble(lblUnitPrice.getText());
+        double total = qty * unitPrice;
+
+        Button btn = new Button("Remove");
+        setRemoveBtnOnAction(btn); /* set action to the btnRemove */
+
+        if (!obList.isEmpty()) {
+            for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
+                if (colItemCode.getCellData(i).equals(code)) {
+                    qty += (int) colQty.getCellData(i);
+                    total = qty * unitPrice;
+                    System.out.println(total);
+                    obList.get(i).setQty(qty);
+                    obList.get(i).setTotal(total);
+
+                    tblOrderCart.refresh();
+                    calculateNetTotal();
+                    return;
+                }
+            }
+        }
+
+        CartTM tm = new CartTM(code, description, qty, unitPrice, total, btn);
+
+        obList.add(tm);
+        tblOrderCart.setItems(obList);
+
+        calculateNetTotal();
+
+        txtQty.setText("");
+    }
+
+    private void calculateNetTotal() {
+        System.out.println(tblOrderCart.getItems().size());
+        double netTotal = 0.0;
+        for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
+            double total = (double) colTotal.getCellData(i);
+            netTotal += total;
+        }
+        lblNetTotal.setText(String.valueOf(netTotal));
+    }
+
+    private void setRemoveBtnOnAction(Button btn) {
+
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
