@@ -28,8 +28,11 @@ public class Item {
 //    @ManyToMany(mappedBy = "items")
 //    private List<Order> orders = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "item")
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+   /* @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "item")
+    private List<OrderDetail> orderDetails = new ArrayList<>();*/
+
+    @ManyToMany(mappedBy = "items")
+    List<Order> orders = new ArrayList<>();
 
     public Item() {}
 

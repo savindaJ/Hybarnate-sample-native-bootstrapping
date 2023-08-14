@@ -19,7 +19,11 @@ public class Customer {
     @Column(name = "customerID")
     int id;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")
+    /*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")
+    private List<Order> orders = new ArrayList<>();*/
+
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="Customer_ID")
     private List<Order> orders = new ArrayList<>();
 
     public Customer() {}

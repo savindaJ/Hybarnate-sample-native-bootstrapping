@@ -32,8 +32,18 @@ public class Order {
 //    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<Item> items = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
+   /* @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
     private List<OrderDetail> orderDetails = new ArrayList<>();
+*/
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "order_detail",
+            joinColumns = @JoinColumn(name = "orders_id"),
+            inverseJoinColumns = @JoinColumn(name = "code")
+    )
+    List<Item> items; // this reference use to mapped attribute !
+
 
     public Order(int id, String description, Timestamp orderDateTime) {
         this.id = id;

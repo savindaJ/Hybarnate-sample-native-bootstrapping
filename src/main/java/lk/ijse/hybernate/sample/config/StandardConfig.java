@@ -15,7 +15,6 @@ public class StandardConfig {
                 .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Item.class)
                  .addAnnotatedClass(Order.class)
-                 .addAnnotatedClass(OrderDetail.class)
                 .buildSessionFactory();
     }
 
