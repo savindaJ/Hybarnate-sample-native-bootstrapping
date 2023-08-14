@@ -3,7 +3,10 @@ package lk.ijse.hybernate.sample.controller;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,8 +22,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.hybernate.sample.config.StandardConfig;
+import lk.ijse.hybernate.sample.entity.Customer;
+import lk.ijse.hybernate.sample.entity.Item;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 public class OrderFormController {
@@ -41,6 +53,68 @@ public class OrderFormController {
     public TableColumn colTotal;
     public TableColumn colAction;
     public Label lblNetTotal;
+
+    @FXML
+    void initialize(){
+        setCellValueFactory();
+        setCustomerId();
+        setItemId();
+    }
+
+    private void setItemId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        List<Item> resultList = getAllItem();
+
+        for (Item item : resultList){
+
+        }
+        cmbItemCode.setItems(obList);
+    }
+
+    private List<Item> getAllItem() {
+
+
+    }
+
+    private void setCustomerId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        List<Customer> resultList = getAll();
+
+        for (Customer customer : resultList){
+            obList.add(String.valueOf(customer.getId()));
+        }
+        cmbCustomerId.setItems(obList);
+    }
+
+    private List<Customer> getAll() {
+        try (Session session = StandardConfig.getInstance().getSession()) {
+
+            Transaction transaction = session.beginTransaction();
+
+            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+
+            CriteriaQuery<Customer> query = criteriaBuilder.createQuery(Customer.class);
+
+            query.from(Customer.class);
+
+            List<Customer> resultList = session.createQuery(query).getResultList();
+
+            transaction.commit();
+
+            return resultList;
+        }
+    }
+
+    void setCellValueFactory() {
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        colAction.setCellValueFactory(new PropertyValueFactory<>("btn"));
+    }
 
     public void mouseEnterd(MouseEvent event) {
         if (event.getSource() instanceof javafx.scene.image.ImageView) {
