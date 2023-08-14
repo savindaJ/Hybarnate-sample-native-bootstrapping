@@ -31,6 +31,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class OrderFormController {
     public AnchorPane root;
@@ -224,7 +225,26 @@ public class OrderFormController {
     }
 
     private void setRemoveBtnOnAction(Button btn) {
+        btn.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
 
+            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+            if (result.orElse(no) == yes) {
+                try {
+                    int selectedIndex = tblOrderCart.getSelectionModel().getSelectedIndex();
+                    System.out.println(selectedIndex);
+                    obList.remove(selectedIndex);
+
+                    tblOrderCart.refresh();
+                    calculateNetTotal();
+                }catch (Exception exception){
+                    new Alert(Alert.AlertType.ERROR,"please select delete row... !").show();
+                }
+            }
+
+        });
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
