@@ -38,9 +38,9 @@ public class OrderFormController {
     public AnchorPane root;
     public Label lblOrderId;
     public Label lblOrderDate;
-    public JFXComboBox cmbCustomerId;
+    public JFXComboBox<String> cmbCustomerId;
     public Label lblCustomerName;
-    public JFXComboBox cmbItemCode;
+    public JFXComboBox<String> cmbItemCode;
     public Label lblDescription;
     public Label lblUnitPrice;
     public Label lblQtyOnHand;
@@ -184,9 +184,22 @@ public class OrderFormController {
     }
 
     public void cmbItemOnAction(ActionEvent actionEvent) {
+        try (Session session = StandardConfig.getInstance().getSession()) {
+            Transaction transaction = session.beginTransaction();
+            Item item = session.get(Item.class, Integer.parseInt(cmbItemCode.getValue()));
+            transaction.commit();
+            lblDescription.setText(item.getItemName());
+            lblQtyOnHand.setText(String.valueOf(item.getQty()));
+            lblUnitPrice.setText(String.valueOf(item.getUnitPrice()));
+        }
     }
 
     public void cmbCustomerOnAction(ActionEvent actionEvent) {
-
+        try (Session session = StandardConfig.getInstance().getSession()) {
+            Transaction transaction = session.beginTransaction();
+            Customer customer = session.get(Customer.class, Integer.parseInt(cmbCustomerId.getValue()));
+            transaction.commit();
+            lblCustomerName.setText(customer.getName());
+        }
     }
 }
