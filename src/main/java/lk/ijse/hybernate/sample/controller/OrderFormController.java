@@ -244,8 +244,8 @@ public class OrderFormController {
 
                     for (int i=0; i<tblOrderCart.getItems().size(); i++){
                         Integer cellData = (Integer) colQty.getCellData(i);
-                        String cellData1 = String.valueOf(colItemCode.getCellData(i));
-                        if (cellData1.equals(cmbItemCode.getValue())){
+                        String itemCode = String.valueOf(colItemCode.getCellData(i));
+                        if (itemCode.equals(cmbItemCode.getValue())){
                             lblQtyOnHand.setText(String.valueOf(Double.parseDouble(lblQtyOnHand.getText())+cellData));
                         }
                     }
@@ -260,9 +260,7 @@ public class OrderFormController {
                     new Alert(Alert.AlertType.ERROR,"please select delete row... !").show();
                 }
             }
-
         });
-
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
