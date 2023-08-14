@@ -244,7 +244,8 @@ public class OrderFormController {
 
                     for (int i=0; i<tblOrderCart.getItems().size(); i++){
                         Integer cellData = (Integer) colQty.getCellData(i);
-                        if (cellData==Integer.parseInt(cmbItemCode.getValue())){
+                        String cellData1 = String.valueOf(colItemCode.getCellData(i));
+                        if (cellData1.equals(cmbItemCode.getValue())){
                             System.out.println("enterd !");
                             lblQtyOnHand.setText(String.valueOf(Double.parseDouble(lblQtyOnHand.getText())+cellData));
                         }else {
