@@ -176,6 +176,7 @@ public class OrderFormController {
     }
 
     public void txtQtyOnAction(ActionEvent actionEvent) {
+
     }
 
     public void btnAddToCartOnAction(ActionEvent actionEvent) {
@@ -238,7 +239,19 @@ public class OrderFormController {
             Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
 
             if (result.orElse(no) == yes) {
+
                 try {
+
+                    for (int i=0; i<tblOrderCart.getItems().size(); i++){
+                        Integer cellData = (Integer) colQty.getCellData(i);
+                        if (cellData==Integer.parseInt(cmbItemCode.getValue())){
+                            System.out.println("enterd !");
+                            lblQtyOnHand.setText(String.valueOf(Double.parseDouble(lblQtyOnHand.getText())+cellData));
+                        }else {
+                            System.out.println("not");
+                        }
+                    }
+
                     int selectedIndex = tblOrderCart.getSelectionModel().getSelectedIndex();
                     System.out.println(selectedIndex);
                     obList.remove(selectedIndex);
@@ -251,6 +264,7 @@ public class OrderFormController {
             }
 
         });
+
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
