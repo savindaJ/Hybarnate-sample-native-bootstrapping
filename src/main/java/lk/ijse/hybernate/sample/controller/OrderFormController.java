@@ -179,39 +179,45 @@ public class OrderFormController {
     }
 
     public void btnAddToCartOnAction(ActionEvent actionEvent) {
-        String code = cmbItemCode.getValue();
-        String description = lblDescription.getText();
-        int qty = Integer.parseInt(txtQty.getText());
-        double unitPrice = Double.parseDouble(lblUnitPrice.getText());
-        double total = qty * unitPrice;
+        if (Double.parseDouble(txtQty.getText())<=Double.parseDouble(lblQtyOnHand.getText())){
+            lblQtyOnHand.setText(String.valueOf(Double.parseDouble(lblQtyOnHand.getText())-Double.parseDouble(txtQty.getText())));
+            String code = cmbItemCode.getValue();
+            String description = lblDescription.getText();
+            int qty = Integer.parseInt(txtQty.getText());
+            double unitPrice = Double.parseDouble(lblUnitPrice.getText());
+            double total = qty * unitPrice;
 
-        Button btn = new Button("Remove");
-        setRemoveBtnOnAction(btn); /* set action to the btnRemove */
+            Button btn = new Button("Remove");
+            setRemoveBtnOnAction(btn); /* set action to the btnRemove */
 
-        if (!obList.isEmpty()) {
-            for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
-                if (colItemCode.getCellData(i).equals(code)) {
-                    qty += (int) colQty.getCellData(i);
-                    total = qty * unitPrice;
-                    System.out.println(total);
-                    obList.get(i).setQty(qty);
-                    obList.get(i).setTotal(total);
+            if (!obList.isEmpty()) {
+                for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
+                    if (colItemCode.getCellData(i).equals(code)) {
+                        qty += (int) colQty.getCellData(i);
+                        total = qty * unitPrice;
+                        System.out.println(total);
+                        obList.get(i).setQty(qty);
+                        obList.get(i).setTotal(total);
 
-                    tblOrderCart.refresh();
-                    calculateNetTotal();
-                    return;
+                        tblOrderCart.refresh();
+                        calculateNetTotal();
+                        return;
+                    }
                 }
             }
+
+            CartTM tm = new CartTM(code, description, qty, unitPrice, total, btn);
+
+            obList.add(tm);
+            tblOrderCart.setItems(obList);
+
+            calculateNetTotal();
+
+            txtQty.setText("");
+        }else {
+            new Alert(Alert.AlertType.ERROR,"unable to qty !, enter low qty please !").show();
         }
 
-        CartTM tm = new CartTM(code, description, qty, unitPrice, total, btn);
-
-        obList.add(tm);
-        tblOrderCart.setItems(obList);
-
-        calculateNetTotal();
-
-        txtQty.setText("");
     }
 
     private void calculateNetTotal() {
