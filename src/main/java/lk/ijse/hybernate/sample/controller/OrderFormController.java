@@ -67,13 +67,21 @@ public class OrderFormController {
         List<Item> resultList = getAllItem();
 
         for (Item item : resultList){
-
+            obList.add(String.valueOf(item.getId()));
         }
         cmbItemCode.setItems(obList);
     }
 
     private List<Item> getAllItem() {
-
+        try (Session session = StandardConfig.getInstance().getSession()) {
+            Transaction transaction = session.beginTransaction();
+            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+            CriteriaQuery<Item> query = criteriaBuilder.createQuery(Item.class);
+            query.from(Item.class);
+            List<Item> resultList = session.createQuery(query).getResultList();
+            transaction.commit();
+            return resultList;
+        }
 
     }
 
