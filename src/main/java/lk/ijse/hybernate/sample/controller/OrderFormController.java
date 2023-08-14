@@ -246,10 +246,7 @@ public class OrderFormController {
                         Integer cellData = (Integer) colQty.getCellData(i);
                         String cellData1 = String.valueOf(colItemCode.getCellData(i));
                         if (cellData1.equals(cmbItemCode.getValue())){
-                            System.out.println("enterd !");
                             lblQtyOnHand.setText(String.valueOf(Double.parseDouble(lblQtyOnHand.getText())+cellData));
-                        }else {
-                            System.out.println("not");
                         }
                     }
 
