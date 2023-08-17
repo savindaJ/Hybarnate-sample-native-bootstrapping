@@ -70,7 +70,7 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/customer.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/menu.fxml")));
         primaryStage.setScene(scene);
         primaryStage.setTitle("Hibernate");
         primaryStage.centerOnScreen();

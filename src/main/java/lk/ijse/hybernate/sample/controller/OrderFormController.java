@@ -157,7 +157,7 @@ public class OrderFormController {
 
     public void btnBackOnAction(MouseEvent event) throws IOException {
         Parent root = null;
-        root = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/home.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/menu.fxml")));
         if (root != null) {
             Scene subScene = new Scene(root);
             Stage primaryStage = (Stage) this.root.getScene().getWindow();
@@ -172,11 +172,25 @@ public class OrderFormController {
         }
     }
 
-    public void btnNewCustomerOnAction(ActionEvent actionEvent) {
+    public void btnNewCustomerOnAction(ActionEvent actionEvent) throws IOException {
+        Parent root = null;
+        root = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customer.fxml")));
+        if (root != null) {
+            Scene subScene = new Scene(root);
+            Stage primaryStage = (Stage) this.root.getScene().getWindow();
+            primaryStage.setScene(subScene);
+            primaryStage.centerOnScreen();
+
+            TranslateTransition tt = new TranslateTransition(Duration.millis(350), subScene.getRoot());
+            tt.setFromX(-subScene.getWidth());
+            tt.setToX(0);
+            tt.play();
+
+        }
     }
 
     public void txtQtyOnAction(ActionEvent actionEvent) {
-
+        btnAddToCartOnAction(actionEvent);
     }
 
     public void btnAddToCartOnAction(ActionEvent actionEvent) {
@@ -251,7 +265,7 @@ public class OrderFormController {
                     }
 
                     int selectedIndex = tblOrderCart.getSelectionModel().getSelectedIndex();
-                    System.out.println(selectedIndex);
+                    /*System.out.println(selectedIndex);*/
                     obList.remove(selectedIndex);
 
                     tblOrderCart.refresh();
