@@ -292,14 +292,14 @@ public class OrderFormController {
 
             Customer customer = session.get(Customer.class, Integer.parseInt(cmbCustomerId.getValue()));
 
+            ObservableList<CartTM> itemsCart = tblOrderCart.getItems();
+
+            for(CartTM tm:itemsCart){
+                Item item = session.get(Item.class, Integer.parseInt(tm.getCode()));
+                items.add(new Item(Integer.parseInt(tm.getCode()),tm.getDescription(),item.getQty()-tm.getQty(),tm.getUnitPrice()));
+            }
+
             if (customer != null){
-
-                ObservableList<CartTM> itemsCart = tblOrderCart.getItems();
-
-                for(CartTM tm:itemsCart){
-                    Item item = session.get(Item.class, Integer.parseInt(tm.getCode()));
-                    items.add(new Item(Integer.parseInt(tm.getCode()),tm.getDescription(),item.getQty()-tm.getQty(),tm.getUnitPrice()));
-                }
 
                 if (!items.isEmpty()){
                     Order order = new Order();
