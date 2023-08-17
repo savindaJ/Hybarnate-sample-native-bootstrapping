@@ -22,6 +22,7 @@ import javafx.util.Duration;
 import lk.ijse.hybernate.sample.config.StandardConfig;
 import lk.ijse.hybernate.sample.entity.Customer;
 import lk.ijse.hybernate.sample.entity.Item;
+import lk.ijse.hybernate.sample.entity.Order;
 import lk.ijse.hybernate.sample.util.CartTM;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -29,6 +30,9 @@ import org.hibernate.Transaction;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.IOException;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -57,6 +61,8 @@ public class OrderFormController {
 
     @FXML
     void initialize(){
+        lblOrderId.setText("Auto !");
+        lblOrderDate.setText(String.valueOf(LocalDate.now()));
         setCellValueFactory();
         setCustomerId();
         setItemId();
@@ -278,7 +284,40 @@ public class OrderFormController {
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
+        List<Item> items = new ArrayList<>();
 
+        try (Session session = StandardConfig.getInstance().getSession()) {
+
+            Transaction transaction = session.beginTransaction();
+
+            Customer customer = session.get(Customer.class, Integer.parseInt(cmbCustomerId.getValue()));
+
+            if (customer != null){
+
+                ObservableList<CartTM> itemsCart = tblOrderCart.getItems();
+
+                for(CartTM tm:itemsCart){
+                    Item item = session.get(Item.class, Integer.parseInt(tm.getCode()));
+                    items.add(new Item(Integer.parseInt(tm.getCode()),tm.getDescription(),item.getQty()-tm.getQty(),tm.getUnitPrice()));
+                }
+
+                if (!items.isEmpty()){
+                    Order order = new Order();
+                    order.setCustomer(customer);
+                    order.setDescription("sample description !");
+                    order.setItems(items);
+
+                    Serializable save = session.save(order);
+
+                    if (save!=null){
+                        new Alert(Alert.AlertType.CONFIRMATION,"Place order successfully added !").show();
+                    }
+                }
+            }
+
+            transaction.commit();
+
+        }
     }
 
     public void cmbItemOnAction(ActionEvent actionEvent) {

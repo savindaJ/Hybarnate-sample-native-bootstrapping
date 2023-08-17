@@ -6,7 +6,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 @Data
 @AllArgsConstructor
@@ -45,7 +44,7 @@ public class Order {
     List<Item> items; // this reference use to mapped attribute !
 
 
-    public Order(int id, String description, Timestamp orderDateTime) {
+    public Order() {
         this.id = id;
         this.description = description;
         this.orderDateTime = orderDateTime;
